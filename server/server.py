@@ -52,8 +52,8 @@ class qna:
         #         response=d['answer']
 
         if response=='':
-            response= "I dont understand your question"
-        print "\nResponse: ", response
+            return "I dont understand your question"
+        return response
 
     def getDocuments(self):
         client = MongoClient('mongodb://localhost:27017/')
@@ -80,5 +80,5 @@ class qna:
         return fuzz.ratio(keywordsDB, keywordsQuestion), fuzz.token_sort_ratio(keywordsDB, keywordsQuestion)
 
 
-obj= qna()
-obj.getAnswer("When is Professor Dan Harkey's office hours")
+# obj= qna()
+# obj.getAnswer("When is Professor Dan Harkey's office hours")

@@ -2,6 +2,7 @@ import os
 import time
 import re
 from slackclient import SlackClient
+from server import qna
 
 
 # instantiate Slack client
@@ -51,8 +52,9 @@ def handle_command(command, channel):
     response = None
     # This is where you start to implement more commands!
     
-    if '?' in str(command):
-        response = "" # Response from the database
+    print(command)
+    obj= qna()
+    response = obj.getAnswer(command)
 
     # Sends the response back to the channel
     slack_client.api_call(
