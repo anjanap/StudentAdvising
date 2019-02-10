@@ -28,10 +28,10 @@ exports.editQuestion= function(req,res) {
     //console.log(question);
     //console.log(answer);
 
-    let sqlInsert = "UPDATE qna SET question = '"+question+"', answer = '"+answer+"' WHERE id = " +id+ ";";
+    let sqlUpdate = "UPDATE qna SET question = '"+question+"', answer = '"+answer+"' WHERE id = " +id+ ";";
     let con=mysqlDB.getConnection();
 
-    con.query(sqlInsert, function (err, result) {
+    con.query(sqlUpdate, function (err, result) {
         if (err) throw err;
         else{
             //todo: update the status code.
@@ -47,10 +47,10 @@ exports.deleteQuestion= function(req,res) {
 
     let id=req.body.id;
 
-    let sqlInsert = "UPDATE qna SET deleted = 1 WHERE id = " +id+ ";";
+    let sqlDelete = "UPDATE qna SET deleted = 1 WHERE id = " +id+ ";";
     let con=mysqlDB.getConnection();
 
-    con.query(sqlInsert, function (err, result) {
+    con.query(sqlDelete, function (err, result) {
         if (err) throw err;
         else{
             //todo: update the status code.
