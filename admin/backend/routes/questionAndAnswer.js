@@ -90,7 +90,7 @@ exports.getAllDeletedQuestions= function(req,res) {
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
-            throw err;
+            res.status(201).json({status: 0, message: "Server Error found: " + err});
         }
         else
         {

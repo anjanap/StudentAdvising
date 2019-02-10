@@ -48,7 +48,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstname\":\"firstname\",\n\t\"lastname\":\"lastname\",\n\t\"email\":\"email1\",\n\t\"password\":\"password\"\n}"
+					"raw": "{\n\t\"firstname\":\"firstname\",\n\t\"lastname\":\"lastname\",\n\t\"email\":\"email2\",\n\t\"password\":\"password\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/signup",
@@ -116,6 +116,50 @@
 					"port": "3004",
 					"path": [
 						"deleteQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllDeletedQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllDeletedQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllDeletedQuestions"
 					]
 				}
 			},
