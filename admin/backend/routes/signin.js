@@ -6,8 +6,8 @@ var mysqlDB=require('./mysqldb');
 exports.signin= function(req,res) {
     var email=req.body.email;
   	var password=req.body.password;
-    console.log(email);
-    console.log(password);
+    //console.log(email);
+    //console.log(password);
   	var sqlQuery="select * from admin where email='"+email+"' and password='"+password+"';";
   	fetchData(function(err,results){
   		if(err){
@@ -16,7 +16,7 @@ exports.signin= function(req,res) {
   		else
   		{
   			if(results.length > 0){
-  			      console.log("success: "+results[0].firstname)
+  			      console.log("success: "+results[0].firstname);
               res.status(201).json({output:results, status: 1});
   			}
   			else {

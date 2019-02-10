@@ -7,6 +7,7 @@ var app = express();
 
 var signin = require('./routes/signin');
 var signup = require('./routes/signup');
+var questionAndAnswer = require('./routes/questionAndAnswer');
 
 // app.use(logger('dev'));
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/signin', signin.signin);
 app.use('/signup',signup.signup);
+app.use('/setQuestion',questionAndAnswer.setQuestion);
 
 // app.post('/signin',function(req, res) {
 //   var p=req.body.password;
