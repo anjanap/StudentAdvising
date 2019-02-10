@@ -1,8 +1,5 @@
-var express=require('express');
-var router=express.Router();
-var mysql=require('mysql');
 var mysqlDB=require('./mysqldb');
-var signin = require('./signin');
+var usefulFunctions = require('./usefulFunctions');
 
 exports.signup= function(req,res) {
   var firstname=req.body.firstname;
@@ -10,9 +7,11 @@ exports.signup= function(req,res) {
   var email=req.body.email;
   var password=req.body.password;
   console.log(firstname+" "+lastname+" "+" "+email+" "+password);
+
   var con=mysqlDB.getConnection();
   var sqlQuery="select * from admin where email='"+email+"';";
-    signin.fetchData(function(err,results){
+
+    usefulFunctions.fetchData(function(err,results){
     if(err){
       throw err;
     }
@@ -35,19 +34,3 @@ exports.signup= function(req,res) {
     }
   },sqlQuery);
 };
-
-// function fetchData(callback,sqlQuery){
-//   var con=mysqlDB.getConnection();
-//   con.query(sqlQuery, function(err, rows, fields) {
-//     if(err){
-//       console.log("ERROR: " + err.message);
-//     }
-//     else
-//     {
-//       console.log("DB Results:"+rows);
-//       callback(err, rows);
-//     }
-//   });
-//   console.log("\nConnection closed..");
-//   con.end();
-// }

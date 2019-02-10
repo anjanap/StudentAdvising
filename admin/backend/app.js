@@ -24,6 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/signin', signin.signin);
 app.use('/signup',signup.signup);
 app.use('/setQuestion',questionAndAnswer.setQuestion);
+app.use('/editQuestion',questionAndAnswer.editQuestion);
+app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);
 
 // app.post('/signin',function(req, res) {
 //   var p=req.body.password;
