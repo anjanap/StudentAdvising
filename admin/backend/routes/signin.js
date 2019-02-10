@@ -1,12 +1,12 @@
-var usefulFunctions = require('./usefulFunctions');
+let usefulFunctions = require('./usefulFunctions');
 
 exports.signin= function(req,res) {
-    var email=req.body.email;
-  	var password=req.body.password;
+    let email=req.body.email;
+  	let password=req.body.password;
     //console.log(email);
     //console.log(password);
 
-  	var sqlQuery="select * from admin where email='"+email+"' and password='"+password+"';";
+  	let sqlQuery="select * from admin where email='"+email+"' and password='"+password+"';";
 
     usefulFunctions.fetchData(function(err,results){
   		if(err){
@@ -15,8 +15,8 @@ exports.signin= function(req,res) {
   		else
   		{
   			if(results.length > 0){
-  			      console.log("success: "+results[0].firstname);
-              res.status(201).json({output:results, status: 1});
+  				console.log("success: "+results[0].firstname);
+  				res.status(201).json({output:results, status: 1});
   			}
   			else {
   				console.log("Results: Wrong login");

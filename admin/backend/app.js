@@ -1,35 +1,37 @@
-var express = require('express');
-var path = require('path');
-var cors = require('cors');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var app = express();
+let express = require('express');
+let path = require('path');
+let cors = require('cors');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let app = express();
 
-var signin = require('./routes/signin');
-var signup = require('./routes/signup');
-var questionAndAnswer = require('./routes/questionAndAnswer');
+let signIn = require('./routes/signin');
+let signUp = require('./routes/signup');
+let questionAndAnswer = require('./routes/questionAndAnswer');
 
 // app.use(logger('dev'));
 
-var corsOptions = {
+let corsOptions = {
     origin: 'http://localhost:3000',
     credentials: true,
-}
-app.use(cors(corsOptions))
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/signin', signin.signin);
-app.use('/signup',signup.signup);
+app.use('/signIn', signIn.signin);
+app.use('/signUp',signUp.signup);
 app.use('/setQuestion',questionAndAnswer.setQuestion);
 app.use('/editQuestion',questionAndAnswer.editQuestion);
 app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);
+app.use('/getAllQuestions',questionAndAnswer.getAllQuestions);
+app.use('/getAllDeletedQuestions',questionAndAnswer.getAllDeletedQuestions);
 
 // app.post('/signin',function(req, res) {
-//   var p=req.body.password;
-//   var u=req.body.username;
+//   let p=req.body.password;
+//   let u=req.body.username;
 //   if(u==='admin@admin.com' && p==='111'){
 //           res.status(201).json({output:1});
 //         }
@@ -37,7 +39,5 @@ app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);
 //     res.status(201).json({output:3});
 //   }
 // });
-
-
 
 module.exports = app;

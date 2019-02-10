@@ -1,4 +1,5 @@
 let mysqlDB=require('./mysqldb');
+let usefulFunctions = require('./usefulFunctions');
 
 exports.setQuestion= function(req,res) {
     let question=req.body.question;
@@ -46,7 +47,6 @@ exports.editQuestion= function(req,res) {
 exports.deleteQuestion= function(req,res) {
 
     let id=req.body.id;
-
     let sqlDelete = "UPDATE qna SET deleted = 1 WHERE id = " +id+ ";";
     let con=mysqlDB.getConnection();
 
@@ -60,5 +60,48 @@ exports.deleteQuestion= function(req,res) {
             });
         }
     });
+};
+
+
+exports.getAllQuestions= function(req,res) {
+
+    let sqlGetAllQuestions = "SELECT * from qna WHERE deleted = 0;";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                res.status(201).json({output:results, status: 1});
+            }
+            else {
+                console.log("No Questions Found!");
+                res.status(201).json({status: 0});
+            }
+        }
+    },sqlGetAllQuestions);
+};
+
+exports.getAllDeletedQuestions= function(req,res) {
+
+    let sqlGetAllDeletedQuestions = "SELECT * from qna WHERE deleted = 1;";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                res.status(201).json({output:results, status: 1});
+            }
+            else {
+                console.log("No Questions Found!");
+                res.status(201).json({status: 0});
+            }
+        }
+    },sqlGetAllDeletedQuestions);
 };
 

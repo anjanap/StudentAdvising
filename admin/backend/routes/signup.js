@@ -1,15 +1,15 @@
-var mysqlDB=require('./mysqldb');
-var usefulFunctions = require('./usefulFunctions');
+let mysqlDB=require('./mysqldb');
+let usefulFunctions = require('./usefulFunctions');
 
 exports.signup= function(req,res) {
-  var firstname=req.body.firstname;
-  var lastname=req.body.lastname;
-  var email=req.body.email;
-  var password=req.body.password;
+  let firstname=req.body.firstname;
+  let lastname=req.body.lastname;
+  let email=req.body.email;
+  let password=req.body.password;
   console.log(firstname+" "+lastname+" "+" "+email+" "+password);
 
-  var con=mysqlDB.getConnection();
-  var sqlQuery="select * from admin where email='"+email+"';";
+  let con=mysqlDB.getConnection();
+  let sqlQuery="select * from admin where email='"+email+"';";
 
     usefulFunctions.fetchData(function(err,results){
     if(err){
@@ -22,7 +22,7 @@ exports.signup= function(req,res) {
           res.status(201).json({status: -1});
       }
       else {
-          var sqlinsert = "INSERT INTO admin(firstname, lastname, email, password) VALUES('"+firstname+"','"+lastname+"','"+email+"','"+password+"');";
+          let sqlinsert = "INSERT INTO admin(firstname, lastname, email, password) VALUES('"+firstname+"','"+lastname+"','"+email+"','"+password+"');";
           con.query(sqlinsert, function (err, result) {
               if (err) throw err;
               else{
