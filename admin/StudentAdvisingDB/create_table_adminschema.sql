@@ -25,6 +25,7 @@ CREATE TABLE OTP
 (
 login_id							INT NOT NULL,
 OTP									INT NOT NULL,
+valid_from						DATETIME NOT NULL,
 valid_till							DATETIME NOT NULL,
 FOREIGN KEY(login_id) REFERENCES Login(id),
 PRIMARY KEY(login_id, OTP, valid_till)
