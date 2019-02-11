@@ -16,7 +16,7 @@ fetch(`${api}/signup`, {
   body: JSON.stringify(payload)
 }).then(res=>res.json())
 .then(res => {
-  return res.output;
+  return res.status;
 })
 .catch(error => {
   console.log("This is signup error");
