@@ -1,8 +1,8 @@
-var ejs=require('ejs');
-var mysql=require('mysql');
+let ejs=require('ejs');
+let mysql=require('mysql');
 
 function getConnection(){
-	var con=mysql.createConnection({
+	let con=mysql.createConnection({
 		host:"localhost",
 		user:"root",
 		password:"12345",

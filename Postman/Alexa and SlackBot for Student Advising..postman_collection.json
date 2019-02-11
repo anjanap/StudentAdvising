@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "667432d8-ac3d-4deb-b366-ee64e67e5ac6",
+		"name": "Alexa and SlackBot for Student Advising.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "editQuestion",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\" : \"rr 3\",\n\t\"answer\": \"rr 3\",\n\t\"id\": 16\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/editQuestion",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"editQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"firstname\",\n\t\"lastname\":\"lastname\",\n\t\"email\":\"email2\",\n\t\"password\":\"password\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setQuestion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\" : \"q5\",\n\t\"answer\": \"a5\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/setQuestion",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"setQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteQuestion",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 16\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/deleteQuestion",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"deleteQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllDeletedQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllDeletedQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllDeletedQuestions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
