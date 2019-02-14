@@ -24,9 +24,9 @@ fetch(`${api}/signup`, {
 });
 
 
-//signin
+//signIn
 export const signin = (payload) =>
-fetch(`${api}/signin`, {
+fetch(`${api}/signIn`, {
   method: 'POST',
   headers: {
     ...headers,
