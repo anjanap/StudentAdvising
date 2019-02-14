@@ -19,7 +19,7 @@ BEGIN
 			'answer', CAST(answer AS CHAR(10000) CHARACTER SET utf8),
 			'category', c.category_name
 		),
-    ']')
+    ']') as result
 		FROM Questions q inner join Answers a on q.answer_id = a.id
 		inner join Categories c on c.id = q.category_id;
 
