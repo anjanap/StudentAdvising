@@ -1,5 +1,11 @@
 use advising_current_students;
 
+insert into Categories(Category_name) values ('General Advising');
+insert into Categories(Category_name) values ('Academic Policy');
+insert into Categories(Category_name) values ('Time off, Holds, Probation, or Disqualification');
+insert into Categories(Category_name) values ('Major Advising Questions');
+insert into Categories(Category_name) values ('Adding, Dropping, or Registering for Classes Questions');
+
 SET @answer ='Students receiving a grade of C-, D+, D, D-, F, IC or WU may repeat a course through Grade Forgiveness (only a certain number of units may be forgiven, and may only be done once per course). This process will replace the previous grade in your GPA calculation, but will still show up on your transcript.';
 insert into Answers(answer, answer_hash, updated_on) values(@answer, md5(@answer), now());
 
@@ -21,6 +27,11 @@ insert into Answers(answer, answer_hash, updated_on) values(@answer, md5(@answer
 SET @answer ='Generally speaking, the last day to drop a course is the end of the 2nd week of classes. The add deadline is generally the last day of the third week of classes. You may find the official dates at the Academic Calendar webpage. Click on the current academic year.';
 insert into Answers(answer, answer_hash, updated_on) values(@answer, md5(@answer), now());
 
+insert into Categories(Category_name) values ('General Advising');
+insert into Categories(Category_name) values ('Academic Policy');
+insert into Categories(Category_name) values ('Time off, Holds, Probation, or Disqualification');
+insert into Categories(Category_name) values ('Major Advising Questions');
+insert into Categories(Category_name) values ('Adding, Dropping, or Registering for Classes Questions');
 
 insert into Questions(question,question_hash,category_id, answer_id) values('Can I take a class over again if I did poorly the first time?',MD5('Can I take a class over again if I did poorly the first time?'),5, 1);
 insert into Questions(question,question_hash,category_id,answer_id) values('I can''t login to MySJSU account, or something is not showing up. Who do I contact?',MD5('I can''t login to MySJSU account, or something is not showing up. Who do I contact?'),5, 2);
