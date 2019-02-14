@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/signIn', signIn.signin);
-app.use('/signUp',signUp.signup);
+app.use('/signIn', signIn.signIn);
+app.use('/signUp',signUp.signUp);
 app.use('/setQuestion',questionAndAnswer.setQuestion);
 app.use('/editQuestion',questionAndAnswer.editQuestion);
 app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);

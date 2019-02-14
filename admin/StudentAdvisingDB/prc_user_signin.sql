@@ -15,7 +15,9 @@ CREATE PROCEDURE prc_user_signin (
 				IN pswd 							VARCHAR(128),
                 IN login_using_phone 	BOOLEAN,
                 IN temp_pswd					INT,
-                OUT User_ID					Varchar(50)
+                OUT User_ID					Varchar(50),
+                OUT fst_name				Varchar(50),
+                OUT lst_name				Varchar(50)
 ) 
 BEGIN
 			  Declare curr_time datetime;
@@ -32,18 +34,18 @@ BEGIN
 			
 						ELSE
 							-- SET msg = 'Successful Login';
-							SELECT id INTO User_ID FROM Login WHERE email_address = email_addr	AND Password = MD5(Pswd);
+							SELECT id, first_name, last_name INTO User_ID,fst_name, lst_name FROM Login WHERE email_address = email_addr AND Password = MD5(Pswd);
                         END If;
 			ELSE
 						IF NOT Exists(
-								SELECT id FROM Login l	join OTP o on l.id = o.login_id   WHERE l.email_address = email_addr AND o.OTP = temp_pswd 
+								SELECT id FROM Login l join OTP o on l.id = o.login_id   WHERE l.email_address = email_addr AND o.OTP = temp_pswd 
                                  AND o.valid_from <= curr_time and o.valid_till >= curr_time) 
 						THEN
 							SET User_ID ='Incorrect UserName Password';
 			
 						ELSE
 							-- SET msg = 'Successful Login';
-							SELECT id INTO User_ID FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd
+							SELECT l.id, first_name, last_name INTO User_ID,fst_name, lst_name FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd
 							AND o.valid_from <= curr_time and o.valid_till >= curr_time limit 1;
 						END If;
 		  END IF;

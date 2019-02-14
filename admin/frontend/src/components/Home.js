@@ -62,7 +62,7 @@ class Home extends Component {
   }
 
   handleRegister = (input) =>{
-    var payload= ({firstName: input.firstname, lastName: input.lastname, email: input.username, password: input.password, countryCode: input.countrycode, phone: input.phone});
+    var payload= ({firstName: input.firstname, lastName: input.lastname, emailAddress: input.username, password: input.password, countryCode: input.countrycode, phoneNumber: input.phone});
     API.signup(payload)
         .then((output) => {
           console.log("check: "+output);
