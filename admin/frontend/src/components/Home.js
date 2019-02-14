@@ -11,12 +11,12 @@ import DisplayErrors from "./DisplayErrors";
 class Home extends Component {
 
     state = {
-        username: '',
-        password: '',
+        username: 'anj@anj.com',
+        password: 'anj',
         firstname: '',
         lastname: '',
         phone: '',
-        countrycode: '',
+        countrycode: '+1',
         validatedusername: '',
         message: '',
         formValid: false,
@@ -29,7 +29,7 @@ class Home extends Component {
         passwordValid2: false,
         fnameValid2: false,
         lnameValid2: false,
-        codeValid2: false,
+        codeValid2: true,
         phoneValid2: false
     };
 
@@ -131,7 +131,7 @@ class Home extends Component {
               fieldValidationErrors.lastname = lnameValid ? '' : ' is invalid';
               break;
         case 'countrycode':
-              codeValid = value.length !== 0 && value.match('^[0-9]+$');
+              codeValid = value.length !== 0 && value.match(/^(\+?\d{1,3}|\d{1,4})$/);
               fieldValidationErrors.code = codeValid ? '' : ' is invalid';
               break;
         case 'phone':
@@ -270,7 +270,7 @@ class Home extends Component {
                   <div className="row form-group">
                     <div className="col-sm-2 col-md-2 col-lg-2" />
                     <div className="col-sm-3 col-md-3 col-lg-3">
-                    <input type="text" ref="code" placeholder="country code*" style={{'width': '120%'}} className="form-control" onChange={(event) => {
+                    <input type="text" ref="code" placeholder="+1"  value={this.state.countrycode} className="form-control" onChange={(event) => {
                         const name="countrycode"
                         const value=event.target.value
                         this.setState({
