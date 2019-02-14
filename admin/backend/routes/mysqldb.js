@@ -6,7 +6,8 @@ function getConnection(){
 		host:"localhost",
 		user:"root",
 		password:"12345",
-		database:"cmpe295"
+		database:"advising_admin",
+		multipleStatements: true
 			});
 	return con;
 }
