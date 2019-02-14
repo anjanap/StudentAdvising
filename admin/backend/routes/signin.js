@@ -1,6 +1,6 @@
 let usefulFunctions = require('./usefulFunctions');
 
-exports.signin= function(req,res) {
+exports.signIn= function(req,res) {
     let emailAddress=req.body.emailAddress;
   	let password=req.body.password;
     //console.log(email);
