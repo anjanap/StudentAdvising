@@ -13,10 +13,13 @@ DROP PROCEDURE IF EXISTS prc_select_question_answer;
 DELIMITER $$
 CREATE PROCEDURE prc_select_question_answer ()
 BEGIN
-		SELECT 
-			CAST(question AS CHAR(10000) CHARACTER SET utf8) as question,
-			CAST(answer AS CHAR(10000) CHARACTER SET utf8) as answer ,
-			c.category_name as category
+		SELECT  CONCAT(
+    '[', JSON_OBJECT(
+			'question', CAST(question AS CHAR(10000) CHARACTER SET utf8),
+			'answer', CAST(answer AS CHAR(10000) CHARACTER SET utf8),
+			'category', c.category_name
+		),
+    ']')
 		FROM Questions q inner join Answers a on q.answer_id = a.id
 		inner join Categories c on c.id = q.category_id;
 
