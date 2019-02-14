@@ -2,10 +2,12 @@ USE advising_current_students;
 
 SET sql_notes = 0;
 
-DROP TABLE IF EXISTS Questions;
-DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS Answers;
 DROP TABLE IF EXISTS History;
+DROP TABLE IF EXISTS Bot_Type;
+DROP TABLE IF EXISTS Questions;
+DROP TABLE IF EXISTS Answers;
+DROP TABLE IF EXISTS Categories;
+
 
 CREATE TABLE Categories
 (
@@ -30,7 +32,7 @@ id										INT AUTO_INCREMENT   NOT NULL,
 question							BLOB NOT NULL,
 question_hash					VARCHAR(255) NOT NULL,
 category_id						INT	NOT NULL,
-answer_id						INT NOT NULL,
+answer_id						INT NULL,
 FOREIGN KEY(category_id) REFERENCES Categories(id),
 FOREIGN KEY(answer_id) REFERENCES Answers(id),
 PRIMARY KEY(id),
