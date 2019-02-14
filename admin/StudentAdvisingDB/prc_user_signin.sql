@@ -45,7 +45,7 @@ BEGIN
 			
 						ELSE
 							-- SET msg = 'Successful Login';
-							SELECT I.id, first_name, last_name INTO User_ID,fst_name, lst_name FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd
+							SELECT l.id, first_name, last_name INTO User_ID,fst_name, lst_name FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd
 							AND o.valid_from <= curr_time and o.valid_till >= curr_time limit 1;
 						END If;
 		  END IF;
