@@ -7,7 +7,7 @@ function fetchData(callback,sqlQuery){
             console.log("ERROR: " + err.message);
         }
         else{
-            console.log("DB Results:"+rows);
+            //console.log("DB Results:"+rows);
             callback(err, rows);
         }
     });
