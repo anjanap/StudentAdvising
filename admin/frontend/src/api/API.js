@@ -4,7 +4,7 @@ const headers = {
     'Accept': 'application/json'
 };
 
-//signup
+//signUp
 export const signup = (payload) =>
 fetch(`${api}/signup`, {
   method: 'POST',
@@ -36,7 +36,7 @@ fetch(`${api}/signIn`, {
   body: JSON.stringify(payload)
 }).then(res=>res.json())
 .then(res => {
-  return res.output;
+  return res;
 })
 .catch(error => {
   console.log("This is login error");

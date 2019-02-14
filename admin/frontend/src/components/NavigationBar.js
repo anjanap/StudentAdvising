@@ -56,14 +56,14 @@ class NavigationBar extends Component {
                   <div className="row">
                     <button className="btn btn-danger" type="button" onClick={() => this.props.logout()}>LOGOUT</button>
                   </div>
-                </div>
+                </div>*/}
                 <div className="col-sm-10 col-md-10 col-lg-10">
 
                               <Route exact path="/ViewAll" render={() => (<ViewAll user={this.props.user}/>)}/>
                               <Route exact path="/Unanswered" render={() => (<Unanswered user={this.props.user}/>)}/>
                               <Route exact path="/Report" render={() => (<Report user={this.props.user}/>)}/>
                 </div>
-              </div>*/}
+              
 
             </div>
         );

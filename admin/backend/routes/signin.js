@@ -3,28 +3,26 @@ let usefulFunctions = require('./usefulFunctions');
 exports.signIn= function(req,res) {
     let emailAddress=req.body.emailAddress;
   	let password=req.body.password;
-    //console.log(email);
-    //console.log(password);
+    console.log(emailAddress);
+    console.log(password);
 
-  	//let sqlQuery="select * from admin where email='"+email+"' and password='"+password+"';";
-    let sqlQuery= "CALL prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result); select @result; ";
+    let sqlQuery= "CALL prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name); select @result,@f_name, @l_name; ";
 
     usefulFunctions.fetchData(function(err,results){
-  		if(err){
-  			throw err;
-  		}
-  		else
-  		{
-  			if(results.length > 0){
-  				//console.log("success: "+results);
-  				res.status(201).json({output:results[1][0]['@result'], status: 1});
-  			}
-  			else {
-  				console.log("Results: Wrong login");
-  				res.status(201).json({status: 0,message: results});
-  			}
-  		}
-  	},sqlQuery);
+        if(err){
+            throw err;
+        }
+        else
+        {
+            console.log(results[1][0]['@result']);
+            if(results[1][0]['@result'] === 'Incorrect UserName Password'){
+                res.status(201).json({status: -1});
+            }
+            else{
+                res.status(201).json({status: 1,"firstName": results[1][0]['@f_name'],"lastName": results[1][0]['@l_name'] });
+            }
+        }
+    },sqlQuery);
   };
 
 

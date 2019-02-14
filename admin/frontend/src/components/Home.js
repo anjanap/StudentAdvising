@@ -17,7 +17,7 @@ class Home extends Component {
         lastname: '',
         phone: '',
         countrycode: '+1',
-        validatedusername: '',
+        validateuser: '',
         message: '',
         formValid: false,
         displayErrors: {email: '', password: ''},
@@ -36,16 +36,16 @@ class Home extends Component {
   handleLogin = (input) =>{
       var u=input.username;
       var p=input.password;
-      var payload= ({email: u, password: p});
+      var payload= ({emailAddress: u, password: p});
       console.log(p+" : "+u);
       API.signin(payload)
           .then((output) => {
             console.log(output);
-              if (output[0].id >= 1) {
+              if (output.status >= 1) {
               ReactDOM.findDOMNode(this.refs.user).value = "";
               ReactDOM.findDOMNode(this.refs.pwd).value = "";
               this.props.history.push("/");
-              this.setState({validatedusername: this.state.username});
+              this.setState({validateuser: output.firstname+output.lastName});
 
               } else {
                 ReactDOM.findDOMNode(this.refs.user).value = "";
@@ -57,7 +57,7 @@ class Home extends Component {
   }
 
   handleLogout = () => {
-    this.setState({username: '', validatedusername: ''});
+    this.setState({username: '', validateuser: ''});
     this.props.history.push("/home");
   }
 
@@ -155,7 +155,7 @@ class Home extends Component {
         return (
             <div>
             {
-              this.state.validatedusername!=='' ? (
+              this.state.validateuser!=='' ? (
               <div className="w3-container">
               <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
               <div className="row">
