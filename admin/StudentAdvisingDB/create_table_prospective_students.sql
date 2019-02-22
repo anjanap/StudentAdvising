@@ -13,7 +13,7 @@ CREATE TABLE Categories
 (
   id				 					INT	AUTO_INCREMENT   NOT NULL,
   category_name 			VARCHAR(100) 					NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (category_name)
 );
 
 CREATE TABLE Answers
