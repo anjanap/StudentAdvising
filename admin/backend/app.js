@@ -8,6 +8,7 @@ let app = express();
 let signIn = require('./routes/signin');
 let signUp = require('./routes/signup');
 let questionAndAnswer = require('./routes/questionAndAnswer');
+let categories = require('./routes/categories');
 
 // app.use(logger('dev'));
 
@@ -23,21 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/signIn', signIn.signIn);
 app.use('/signUp',signUp.signUp);
-app.use('/setQuestion',questionAndAnswer.setQuestion);
+app.use('/setQuestionAndAnswer',questionAndAnswer.setQuestionAndAnswer);
 app.use('/editQuestion',questionAndAnswer.editQuestion);
 app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);
 app.use('/getAllQuestions',questionAndAnswer.getAllQuestions);
 app.use('/getAllDeletedQuestions',questionAndAnswer.getAllDeletedQuestions);
-
-// app.post('/signin',function(req, res) {
-//   let p=req.body.password;
-//   let u=req.body.username;
-//   if(u==='admin@admin.com' && p==='111'){
-//           res.status(201).json({output:1});
-//         }
-//   else{
-//     res.status(201).json({output:3});
-//   }
-// });
+app.use('/getAllCategories',categories.getAllCategories);
 
 module.exports = app;

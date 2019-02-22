@@ -9,11 +9,9 @@ exports.signUp= function(req,res) {
     let password = req.body.password;
     let countryCode = req.body.countryCode;
     let phoneNumber = req.body.phoneNumber;
+    let isActive = 0;
 
-    //let isActive = req.body.isActive;
     //let loginUsingPhone = req.body.loginUsingPhone;
-
-    let isActive = 1; //for development only
     let loginUsingPhone = 0; //for development only
 
     let sqlQuery= "CALL prc_user_signup('"+firstName+"','"+lastName+"','"+password+"','"+emailAddress+"', '"+countryCode+"','"+phoneNumber+"', '"+loginUsingPhone+"', @result); select @result; ";

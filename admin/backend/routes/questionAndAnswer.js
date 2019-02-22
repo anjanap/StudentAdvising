@@ -1,24 +1,30 @@
 let mysqlDB=require('./mysqldb');
 let usefulFunctions = require('./usefulFunctions');
 
-exports.setQuestion= function(req,res) {
+exports.setQuestionAndAnswer= function(req,res) {
+    debugger;
     let question=req.body.question;
     let answer=req.body.answer;
+    let category=req.body.category;
     //console.log(question);
     //console.log(answer);
 
-    let sqlInsert = "INSERT INTO qna(question, answer) VALUES('"+question+"','"+answer+"');";
-    let con=mysqlDB.getConnection();
+    let sqlQuery= "CALL advising_current_students.prc_add_qna('"+answer+"','"+question+"','"+category+"',@RetMsg); select @RetMsg; ";
 
-    con.query(sqlInsert, function (err, result) {
-        if (err) throw err;
-        else{
-            res.status(201).json({
-                status:     1,
-                message:    "Question and Answer successfully inserted at index " + result.insertId + "."
-            });
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
         }
-    });
+        else
+        {
+            if(results[1][0]['@RetMsg'] === 'Data inserted successfully'){
+                res.status(201).json({status: 1});
+            }
+            else if(results[1][0]['@RetMsg'] === 'Question already exist'){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlQuery);
 };
 
 exports.editQuestion= function(req,res) {
@@ -74,21 +80,17 @@ exports.getAllQuestions= function(req,res) {
         else
         {
             if(results.length > 0){
-                var final = [];
+                let questionAndAnswers = [];
                 results[0].forEach(function(element) {
-                    var jsonObj = {
+                    let jsonObj = {
                         question  : JSON.parse(element.result)[0].question,
                         answer  : JSON.parse(element.result)[0].answer,
-                        category  : JSON.parse(element.result)[0].category//,
-                        //edit : '<MDBBtn color="warning" className="glyphicon glyphicon-pencil" size="sm"></MDBBtn>',
-                        //deleteQues : '<MDBBtn color="danger" className="glyphicon glyphicon-trash" size="sm"></MDBBtn>'
+                        category  : JSON.parse(element.result)[0].category,
                     };
-                    final.push(jsonObj);
+                    questionAndAnswers.push(jsonObj);
                 });
 
-                //res.send(JSON.parse(results[0][0].result)[0].answer);
-                console.log(final);
-                res.send(final);
+                res.send(questionAndAnswers);
             }
             else {
                 console.log("No Questions Found!");
