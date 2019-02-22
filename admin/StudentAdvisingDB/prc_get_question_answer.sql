@@ -1,5 +1,5 @@
 USE advising_current_students;
-set global max_allowed_packet=1024*1024*1024;
+
 
 -- =============================================
 -- Author:      Aastha Kumar
