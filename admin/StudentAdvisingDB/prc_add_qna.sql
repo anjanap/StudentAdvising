@@ -58,7 +58,7 @@ BEGIN
                                         
                                 END IF;   
                                 
-                            SELECT id into cat_id FROM Categories where cat_name = category_name;
+                            SELECT id into cat_id FROM Categories where category_name = cat_name;
                             
                             INSERT INTO Questions(question,
 																	question_hash,
