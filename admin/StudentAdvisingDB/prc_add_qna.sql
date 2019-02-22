@@ -50,7 +50,7 @@ BEGIN
 																		 ans_hash, 
 																		 cur_time);
 									
-									SELECT last_id_inserted = LAST_INSERT_ID();
+									SET last_id_inserted = LAST_INSERT_ID();
                                   
                                   ELSE
                                   
