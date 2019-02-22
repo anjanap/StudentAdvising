@@ -79,14 +79,15 @@ exports.getAllQuestions= function(req,res) {
                     var jsonObj = {
                         question  : JSON.parse(element.result)[0].question,
                         answer  : JSON.parse(element.result)[0].answer,
-                        category  : JSON.parse(element.result)[0].category,
-                        edit : '<MDBBtn color="warning" className="glyphicon glyphicon-pencil" size="sm"></MDBBtn>',
-                        deleteQues : '<MDBBtn color="danger" className="glyphicon glyphicon-trash" size="sm"></MDBBtn>'
+                        category  : JSON.parse(element.result)[0].category//,
+                        //edit : '<MDBBtn color="warning" className="glyphicon glyphicon-pencil" size="sm"></MDBBtn>',
+                        //deleteQues : '<MDBBtn color="danger" className="glyphicon glyphicon-trash" size="sm"></MDBBtn>'
                     };
                     final.push(jsonObj);
                 });
 
                 //res.send(JSON.parse(results[0][0].result)[0].answer);
+                console.log(final);
                 res.send(final);
             }
             else {
@@ -117,4 +118,3 @@ exports.getAllDeletedQuestions= function(req,res) {
         }
     },sqlGetAllDeletedQuestions);
 };
-

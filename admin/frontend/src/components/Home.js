@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import NavigationBar from "./NavigationBar";
 import ReactDOM from 'react-dom';
 import * as API from '../api/API';
-import $ from 'jquery';
+// import $ from 'jquery';
 import './style.css';
 import DisplayErrors from "./DisplayErrors";
 //import './script.js';
@@ -11,13 +11,13 @@ import DisplayErrors from "./DisplayErrors";
 class Home extends Component {
 
     state = {
-        username: 'anj@anj.com',
-        password: 'anj',
+        username: '',
+        password: '',
         firstname: '',
         lastname: '',
         phone: '',
         countrycode: '+1',
-        validateuser: '',
+        validateuser: 'anj pra',
         message: '',
         formValid: false,
         displayErrors: {email: '', password: ''},
@@ -45,7 +45,7 @@ class Home extends Component {
               ReactDOM.findDOMNode(this.refs.user).value = "";
               ReactDOM.findDOMNode(this.refs.pwd).value = "";
               this.props.history.push("/");
-              this.setState({validateuser: output.firstname+output.lastName});
+              this.setState({validateuser: (output.firstName+' '+output.lastName)});
 
               } else {
                 ReactDOM.findDOMNode(this.refs.user).value = "";
@@ -159,7 +159,7 @@ class Home extends Component {
               <div className="w3-container">
               <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
               <div className="row">
-                <NavigationBar user={this.state.username} logout={()=>this.handleLogout()}/>
+                <NavigationBar user={this.state.validateuser} logout={()=>this.handleLogout()}/>
               </div>
             </div>) :
               (<div className="">
@@ -218,7 +218,7 @@ class Home extends Component {
                 <div className="col-sm-5 col-md-5 col-lg-5" >
                 <div className="login-form">
                 <form>
-                <h2 class="text-center login-title">Register</h2>
+                <h2 className="text-center login-title">Register</h2>
                 <div className="row form-group">
                   <div className="col-sm-2 col-md-2 col-lg-2" />
                   <div className="col-sm-8 col-md-8 col-lg-8">
@@ -279,7 +279,7 @@ class Home extends Component {
                         }, () => { this.validateField2(name, value) });}}/>
                     </div>
                     <div className="col-sm-5 col-md-5 col-lg-5">
-                    <input type="text" ref="ph" maxlength="10" placeholder="phone number*" className="form-control" onChange={(event) => {
+                    <input type="text" ref="ph" maxLength="10" placeholder="phone number*" className="form-control" onChange={(event) => {
                         const name="phone"
                         const value=event.target.value
                         this.setState({

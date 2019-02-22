@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import * as API from '../api/API';
 
-class Report extends Component {
+class History extends Component {
 
     render() {
         return (
@@ -12,4 +12,4 @@ class Report extends Component {
     }
 }
 
-export default Report;
+export default History;
