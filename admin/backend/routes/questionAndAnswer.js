@@ -65,7 +65,7 @@ exports.deleteQuestion= function(req,res) {
 
 exports.getAllQuestions= function(req,res) {
 
-    let sqlGetAllQuestions = "SELECT * from qna WHERE deleted = 0;";
+    let sqlGetAllQuestions = "call advising_current_students.prc_select_question_answer();";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -74,7 +74,20 @@ exports.getAllQuestions= function(req,res) {
         else
         {
             if(results.length > 0){
-                res.status(201).json({output:results, status: 1});
+                var final = [];
+                results[0].forEach(function(element) {
+                    var jsonObj = {
+                        question  : JSON.parse(element.result)[0].question,
+                        answer  : JSON.parse(element.result)[0].answer,
+                        category  : JSON.parse(element.result)[0].category,
+                        edit : '<MDBBtn color="warning" className="glyphicon glyphicon-pencil" size="sm"></MDBBtn>',
+                        deleteQues : '<MDBBtn color="danger" className="glyphicon glyphicon-trash" size="sm"></MDBBtn>'
+                    };
+                    final.push(jsonObj);
+                });
+
+                //res.send(JSON.parse(results[0][0].result)[0].answer);
+                res.send(final);
             }
             else {
                 console.log("No Questions Found!");
