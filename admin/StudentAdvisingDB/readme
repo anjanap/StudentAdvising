@@ -1,0 +1,10 @@
+1) Open terminal and go to mysql (Go to mysql/bin) 
+cd usr/local/mysql/bin/
+
+2) Then login into the mysql console as follows (replace your username after -u (root) and password after -p. Note that there is no space between -p and password. It is not the typo. It is suppose to be that way).
+
+./mysql -u root -p112233
+
+3) Then run the following command - change the path to location where files are located on your machine
+
+ source /Users/aastha/Documents/GitHub/StudentAdvising/admin/StudentAdvisingDB/execute.sql
