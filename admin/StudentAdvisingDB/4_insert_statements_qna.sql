@@ -1,4 +1,8 @@
-use advising_current_students;
+use advising;
+
+insert into  applies_to(apply_to) values('Current Student');
+insert into  applies_to(apply_to) values('Prospective Student');
+insert into  applies_to(apply_to) values('Both');
 
 insert into Categories(Category_name) values ('General Advising');
 insert into Categories(Category_name) values ('Academic Policy');
@@ -29,13 +33,13 @@ insert into Answers(answer, answer_hash, updated_on) values(@answer, md5(@answer
 
 
 
-insert into Questions(question,question_hash,category_id, answer_id) values('Can I take a class over again if I did poorly the first time?',MD5('Can I take a class over again if I did poorly the first time?'),5, 1);
-insert into Questions(question,question_hash,category_id,answer_id) values('I can''t login to MySJSU account, or something is not showing up. Who do I contact?',MD5('I can''t login to MySJSU account, or something is not showing up. Who do I contact?'),5, 2);
-insert into Questions(question,question_hash,category_id, answer_id) values('I was waitlisted at spot number XX, now it''s not on my schedule anymore. What happened?',MD5('I was waitlisted at spot number XX, now it''s not on my schedule anymore. What happened?'),5, 3);
-insert into Questions(question,question_hash,category_id, answer_id) values('What if all the classes I want are closed or waitlisted?',MD5('What if all the classes I want are closed or waitlisted?'),5,4);
-insert into Questions(question,question_hash,category_id, answer_id) values('What if I change my mind about the courses I want to take before the semester starts?',MD5('What if I change my mind about the courses I want to take before the semester starts?'),5,5);
-insert into Questions(question,question_hash,category_id, answer_id) values('What is the max number of units I can take?',MD5('What is the max number of units I can take?'),5,6);
-insert into Questions(question,question_hash,category_id, answer_id) values('When is the last date to add or drop a class?',MD5('When is the last date to add or drop a class?'),5, 7);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('Can I take a class over again if I did poorly the first time?',MD5('Can I take a class over again if I did poorly the first time?'),5, 1, 1);
+insert into Questions(question,question_hash,category_id,answer_id,apply_to_id) values('I can''t login to MySJSU account, or something is not showing up. Who do I contact?',MD5('I can''t login to MySJSU account, or something is not showing up. Who do I contact?'),5, 2, 1);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('I was waitlisted at spot number XX, now it''s not on my schedule anymore. What happened?',MD5('I was waitlisted at spot number XX, now it''s not on my schedule anymore. What happened?'),5, 3, 1);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('What if all the classes I want are closed or waitlisted?',MD5('What if all the classes I want are closed or waitlisted?'),5,4, 1);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('What if I change my mind about the courses I want to take before the semester starts?',MD5('What if I change my mind about the courses I want to take before the semester starts?'),5,5, 1);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('What is the max number of units I can take?',MD5('What is the max number of units I can take?'),5,6, 1);
+insert into Questions(question,question_hash,category_id, answer_id, apply_to_id) values('When is the last date to add or drop a class?',MD5('When is the last date to add or drop a class?'),5, 7, 1);
 
 select CAST(question AS CHAR(10000) CHARACTER SET utf8) from Questions;
 

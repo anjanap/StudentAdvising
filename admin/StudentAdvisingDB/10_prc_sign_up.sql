@@ -47,7 +47,7 @@ BEGIN
                                                                  Last_Name, 
                                                                  MD5(Password), 
                                                                  Email_Addr,
-                                                                 true,
+                                                                 false,
                                                                  Country_Code,
                                                                  Phone_Number,
                                                                  Login_Using_Phone);

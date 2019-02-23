@@ -1,4 +1,4 @@
-USE advising_current_students;
+USE advising;
 
 
 -- =============================================
@@ -17,11 +17,13 @@ BEGIN
     '[', JSON_OBJECT(
 			'question', CAST(question AS CHAR(10000) CHARACTER SET utf8),
 			'answer', CAST(answer AS CHAR(10000) CHARACTER SET utf8),
-			'category', c.category_name
+			'category', c.category_name,
+            'apply_to', ap.apply_to
 		),
     ']') as result
 		FROM Questions q inner join Answers a on q.answer_id = a.id
-		inner join Categories c on c.id = q.category_id;
+		inner join Categories c on c.id = q.category_id
+        inner join applies_to ap on q.apply_to_id = ap.id;
 
 END $$
 

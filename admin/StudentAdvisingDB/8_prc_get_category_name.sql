@@ -1,4 +1,4 @@
-USE advising_current_students;
+USE advising;
 
 -- =============================================
 -- Author:      Aastha Kumar

@@ -1,10 +1,10 @@
-USE advising_current_students;
+USE advising;
 
 SET sql_notes = 0;
 
-DROP TABLE IF EXISTS History;
-DROP TABLE IF EXISTS Bot_Type;
 DROP TABLE IF EXISTS Questions;
+DROP TABLE IF EXISTS Applies_To;
+DROP TABLE IF EXISTS Unanswered;
 DROP TABLE IF EXISTS Answers;
 DROP TABLE IF EXISTS Categories;
 
@@ -12,8 +12,9 @@ DROP TABLE IF EXISTS Categories;
 CREATE TABLE Categories
 (
   id				 					INT	AUTO_INCREMENT   NOT NULL,
-  category_name 			VARCHAR(100) 					NULL,
-  PRIMARY KEY (category_name)
+  category_name 			VARCHAR(100) 	NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY(category_name)
 );
 
 CREATE TABLE Answers
@@ -26,6 +27,14 @@ PRIMARY KEY(id,updated_on),
 UNIQUE KEY(answer_hash)
 );
 
+CREATE TABLE Applies_To
+(
+id							INT AUTO_INCREMENT   NOT NULL,
+apply_to				VARCHAR(100) NOT NULL,
+PRIMARY KEY(id),
+UNIQUE KEY(apply_to)
+);
+
 CREATE TABLE Questions
 (
 id										INT AUTO_INCREMENT   NOT NULL,
@@ -33,29 +42,22 @@ question							BLOB NOT NULL,
 question_hash					VARCHAR(255) NOT NULL,
 category_id						INT	NOT NULL,
 answer_id						INT NULL,
+apply_to_id		                 INT NULL,
 FOREIGN KEY(category_id) REFERENCES Categories(id),
 FOREIGN KEY(answer_id) REFERENCES Answers(id),
+FOREIGN KEY(apply_to_id) references Applies_To(id),
 PRIMARY KEY(id),
 UNIQUE KEY(question_hash)
 );
 
-CREATE TABLE Bot_Type
+CREATE TABLE Unanswered
 (
-id							INT AUTO_INCREMENT   NOT NULL,
-type						INT NOT NULL,
+id										INT AUTO_INCREMENT   NOT NULL,
+question 							TEXT NOT NULL,
+question_hash					VARCHAR(255) NOT NULL,
+asked_on						DATETIME	NOT NULL,
 PRIMARY KEY(id)
 );
 
-CREATE TABLE History
-(
-id										INT AUTO_INCREMENT   NOT NULL,
-question_id						INT NOT NULL,
-if_answered						BOOLEAN	NOT NULL,
-answer_id						INT NULL,
-bot_type_id						INT NOT NULL,
-asked_on						DATETIME	NOT NULL,
-FOREIGN KEY(bot_type_id) REFERENCES Bot_Type(id),
-FOREIGN KEY(answer_id) REFERENCES Answers(id),
-FOREIGN KEY(question_id) REFERENCES Questions(id),
-PRIMARY KEY(id)
-);
+
+

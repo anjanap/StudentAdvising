@@ -1,4 +1,4 @@
-USE advising_current_students;
+USE advising;
 
 -- =============================================
 -- Author:      Aastha Kumar
@@ -14,6 +14,7 @@ CREATE PROCEDURE prc_add_qna (
 				IN ans 					                VARCHAR(10000),
 				IN ques 					            VARCHAR(10000),
 				IN cat_name 						VARCHAR(100),
+                IN app_to							VARCHAR(50),
                 OUT RetMsg						VARCHAR(50)
 ) 
 BEGIN
@@ -23,7 +24,7 @@ BEGIN
             DECLARE ques_hash VARCHAR(255);
             DECLARE last_id_inserted INT;
             DECLARE cat_id INT;
-            
+            DECLARE app_id INT;
             DECLARE EXIT HANDLER FOR SQLEXCEPTION 
             BEGIN
 				ROLLBACK;  -- rollback any changes made in the transaction
@@ -35,7 +36,7 @@ BEGIN
                     SET cur_time = now();
 					SET ans_hash = md5(ans);
                     SET ques_hash = md5(ques);
-                    
+                    SELECT id into app_id from Applies_To where apply_to = app_id;
 					
                     IF NOT EXISTS (SELECT * FROM Questions WHERE question_hash = ques_hash)
 						THEN
@@ -63,11 +64,13 @@ BEGIN
                             INSERT INTO Questions(question,
 																	question_hash,
                                                                     category_id,
-                                                                    answer_id) 
+                                                                    answer_id,
+                                                                    apply_to_id) 
 							VALUES							(ques,
 																	 ques_hash,
                                                                      cat_id,
-                                                                     last_id_inserted);
+                                                                     last_id_inserted,
+                                                                     app_id);
 							
                             SET RetMsg = 'Data inserted successfully';
                          
