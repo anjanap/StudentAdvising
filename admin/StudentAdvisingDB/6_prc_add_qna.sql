@@ -36,7 +36,7 @@ BEGIN
                     SET cur_time = now();
 					SET ans_hash = md5(ans);
                     SET ques_hash = md5(ques);
-                    SELECT id into app_id from Applies_To where apply_to = app_id;
+                    SELECT id into app_id from Applies_To where apply_to = app_to;
 					
                     IF NOT EXISTS (SELECT * FROM Questions WHERE question_hash = ques_hash)
 						THEN

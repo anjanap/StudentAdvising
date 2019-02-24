@@ -15,6 +15,8 @@ select @result,@f_name, @l_name;
 call advising.prc_select_question_answer();
 
 
+call advising.prc_get_answer('Does Dr Brucks have office hours on friday?');
+
 insert into advising.categories(category_name) values('Academic Standing');
 
 call advising.prc_add_qna('Permission Codes, or Class Permission Numbers, are required to add a course that indicates Department Consent or Instructor Consent. These codes can be obtained from the appropriate department office or instructor. A permission code is needed after open registration has ended.',
@@ -28,8 +30,8 @@ select@result;
 select * from answers;
 
 
-call advising.prc_add_qna('mon to fri 10 to 12','what are Dr Brucks office hours?','General Advising',@result);
-
+call advising.prc_add_qna('Yes','Does Dr Brucks have office hours on friday?','General Advising','Current Student', @result);
+select @result;
 call advising.prc_get_category();
 
 call advising.prc_add_category('Changing Your Major',@result);

@@ -23,12 +23,19 @@ BEGIN
 			'[', JSON_OBJECT(
 					'question', CAST(question AS CHAR(10000) CHARACTER SET utf8),
 					'answer', CAST(answer AS CHAR(10000) CHARACTER SET utf8),
-					'category', c.category_name
+					'category', c.category_name,
+                    'applies_to', ap.apply_to,
+                    'ques_id', q.id,
+                    'ans_id', a.id,
+                    'cat_id', c.id,
+                    'applies_to_id', ap.id
 				),
 			']') AS result
 				FROM Questions q INNER JOIN Answers a ON q.answer_id = a.id
 				INNER JOIN Categories c ON c.id = q.category_id
+				INNER JOIN applies_to ap ON q.apply_to_id = ap.id
 				WHERE q.question_hash = ques_hash;
+               
 		ELSE
 			SELECT 'Question doesn''t exist' AS result;
 		END IF;

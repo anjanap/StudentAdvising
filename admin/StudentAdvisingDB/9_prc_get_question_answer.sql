@@ -18,7 +18,11 @@ BEGIN
 			'question', CAST(question AS CHAR(10000) CHARACTER SET utf8),
 			'answer', CAST(answer AS CHAR(10000) CHARACTER SET utf8),
 			'category', c.category_name,
-            'apply_to', ap.apply_to
+            'apply_to', ap.apply_to,
+			'ques_id', q.id,
+			'ans_id', a.id,
+			'cat_id', c.id,
+			'applies_to_id', ap.id
 		),
     ']') as result
 		FROM Questions q inner join Answers a on q.answer_id = a.id
