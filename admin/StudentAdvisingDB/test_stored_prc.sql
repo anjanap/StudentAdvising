@@ -20,8 +20,7 @@ call advising.prc_get_answer('Does Dr Brucks have office hours on friday?');
 insert into advising.categories(category_name) values('Academic Standing');
 
 call advising.prc_add_qna('Permission Codes, or Class Permission Numbers, are required to add a course that indicates Department Consent or Instructor Consent. These codes can be obtained from the appropriate department office or instructor. A permission code is needed after open registration has ended.',
-'Where can I get a permission code?',
-'Academic Standing',@result);
+'Where can I get a permission code?', 'Academic Standing',"Prospective Student", @result);
 select @result;
 
 

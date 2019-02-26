@@ -1,15 +1,15 @@
 let mysqlDB=require('./mysqldb');
 let usefulFunctions = require('./usefulFunctions');
 
-exports.setQuestionAndAnswer= function(req,res) {
+exports.setQuestionAndAnswer = function(req,res) {
     let question=req.body.question;
     let answer=req.body.answer;
     let category=req.body.category;
-    let appliesTo=req.body.appliesTo;
+    let applyTo=req.body.applyTo;
     //console.log(question);
     //console.log(answer);
 
-    let sqlQuery= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+appliesTo+"',@RetMsg); select @RetMsg; ";
+    let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -24,10 +24,10 @@ exports.setQuestionAndAnswer= function(req,res) {
                 res.status(201).json({status: -1});
             }
         }
-    },sqlQuery);
+    },sqlSetQuestionAndAnswer);
 };
 
-exports.editQuestion= function(req,res) {
+exports.editQuestion = function(req,res) {
 
     let id=req.body.id;
     let question=req.body.question;
@@ -50,7 +50,7 @@ exports.editQuestion= function(req,res) {
     });
 };
 
-exports.deleteQuestion= function(req,res) {
+exports.deleteQuestion = function(req,res) {
 
     let id=req.body.id;
     let sqlDelete = "UPDATE qna SET deleted = 1 WHERE id = " +id+ ";";
@@ -69,9 +69,9 @@ exports.deleteQuestion= function(req,res) {
 };
 
 
-exports.getAllQuestions= function(req,res) {
+exports.getAllQuestionsAndAnswers = function(req,res) {
 
-    let sqlGetAllQuestions = "call advising.prc_select_question_answer();";
+    let sqlGetAllQuestionsAndAnswers = "call advising.prc_select_question_answer();";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -83,9 +83,14 @@ exports.getAllQuestions= function(req,res) {
                 let questionAndAnswers = [];
                 results[0].forEach(function(element) {
                     let jsonObj = {
-                        question  : JSON.parse(element.result)[0].question,
-                        answer  : JSON.parse(element.result)[0].answer,
-                        category  : JSON.parse(element.result)[0].category,
+                        question    : JSON.parse(element.result)[0].question,
+                        answer      : JSON.parse(element.result)[0].answer,
+                        category    : JSON.parse(element.result)[0].category,
+                        applyTo     : JSON.parse(element.result)[0].apply_to,
+                        questionId  : JSON.parse(element.result)[0].ques_id,
+                        answerId    : JSON.parse(element.result)[0].ans_id,
+                        categoryId  : JSON.parse(element.result)[0].cat_id,
+                        applyToID   : JSON.parse(element.result)[0].applies_to_id
                     };
                     questionAndAnswers.push(jsonObj);
                 });
@@ -97,10 +102,46 @@ exports.getAllQuestions= function(req,res) {
                 res.status(201).json({status: -1});
             }
         }
-    },sqlGetAllQuestions);
+    },sqlGetAllQuestionsAndAnswers);
 };
 
-exports.getAllDeletedQuestions= function(req,res) {
+exports.getAnswer = function(req,res) {
+
+    let question=req.body.question;
+
+    let sqlGetAnswer = "call advising.prc_get_answer('"+question+"');";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                let questionAndAnswer = [];
+                let jsonObj = {
+                    question    : JSON.parse(results[0][0].result)[0].question,
+                    answer      : JSON.parse(results[0][0].result)[0].answer,
+                    category    : JSON.parse(results[0][0].result)[0].category,
+                    applyTo     : JSON.parse(results[0][0].result)[0].apply_to,
+                    questionId  : JSON.parse(results[0][0].result)[0].ques_id,
+                    answerId    : JSON.parse(results[0][0].result)[0].ans_id,
+                    categoryId  : JSON.parse(results[0][0].result)[0].cat_id,
+                    applyToID   : JSON.parse(results[0][0].result)[0].applies_to_id
+                };
+                    questionAndAnswer.push(jsonObj);
+
+                res.status(201).json({status: 1,questionAndAnswer:questionAndAnswer});
+            }
+            else {
+                console.log("No Questions Found!");
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlGetAnswer);
+};
+
+exports.getAllDeletedQuestions = function(req,res) {
 
     let sqlGetAllDeletedQuestions = "SELECT * from qna WHERE deleted = 1;";
 

@@ -14,7 +14,7 @@ exports.signUp= function(req,res) {
     //let loginUsingPhone = req.body.loginUsingPhone;
     let loginUsingPhone = 0; //for development only
 
-    let sqlQuery= "CALL advising_admin.prc_user_signup('"+firstName+"','"+lastName+"','"+password+"','"+emailAddress+"', '"+countryCode+"','"+phoneNumber+"', '"+loginUsingPhone+"', @result); select @result; ";
+    let sqlSignUp= "CALL advising_admin.prc_user_signup('"+firstName+"','"+lastName+"','"+password+"','"+emailAddress+"', '"+countryCode+"','"+phoneNumber+"', '"+loginUsingPhone+"', @result); select @result; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -29,5 +29,5 @@ exports.signUp= function(req,res) {
                 res.status(201).json({status: -1});
             }
         }
-    },sqlQuery);
+    },sqlSignUp);
 };
