@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "signup",
+			"name": "signUp",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -48,16 +48,45 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstname\":\"firstname\",\n\t\"lastname\":\"lastname\",\n\t\"email\":\"email2\",\n\t\"password\":\"password\"\n}"
+					"raw": "{\n\t\"firstName\":\"Ujjvql\",\n\t\"lastName\":\"Soni\",\n\t\"emailAddress\":\"u@u.com\",\n\t\"password\":\"111\",\n\t\"countryCode\" : \"+1\",\n\t\"phoneNumber\" : \"8722357460\",\n\t\"isActive\" : \"1\",\n\t\"loginUsingPhone\" : \"1\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3004/signup",
+					"raw": "localhost:3004/signUp",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"signup"
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"emailAddress\":\"u@u.com\",\n\t\"password\":\"111\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/signIn",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"signIn"
 					]
 				}
 			},
@@ -77,16 +106,45 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"q5\",\n\t\"answer\": \"a5\"\n}"
+					"raw": "{\n\t\"question\" : \"what are Dr Brucks office hours?\",\n\t\"answer\": \"mon to fri 10 to 12\",\n\t\"category\" : \"Academic Policy\",\n\t\"appliesTo\" : \"Prospective Student\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3004/setQuestion",
+					"raw": "localhost:3004/setQuestionAndAnswer",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"setQuestion"
+						"setQuestionAndAnswer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setCategory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"category\" : \"New Category\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/setCategory",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"setCategory"
 					]
 				}
 			},
@@ -138,6 +196,28 @@
 					"port": "3004",
 					"path": [
 						"getAllQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCategories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllCategories",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllCategories"
 					]
 				}
 			},
