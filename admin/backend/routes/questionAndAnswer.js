@@ -2,14 +2,14 @@ let mysqlDB=require('./mysqldb');
 let usefulFunctions = require('./usefulFunctions');
 
 exports.setQuestionAndAnswer= function(req,res) {
-    debugger;
     let question=req.body.question;
     let answer=req.body.answer;
     let category=req.body.category;
+    let appliesTo=req.body.appliesTo;
     //console.log(question);
     //console.log(answer);
 
-    let sqlQuery= "CALL advising_current_students.prc_add_qna('"+answer+"','"+question+"','"+category+"',@RetMsg); select @RetMsg; ";
+    let sqlQuery= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+appliesTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -71,7 +71,7 @@ exports.deleteQuestion= function(req,res) {
 
 exports.getAllQuestions= function(req,res) {
 
-    let sqlGetAllQuestions = "call advising_current_students.prc_select_question_answer();";
+    let sqlGetAllQuestions = "call advising.prc_select_question_answer();";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -90,11 +90,11 @@ exports.getAllQuestions= function(req,res) {
                     questionAndAnswers.push(jsonObj);
                 });
 
-                res.send(questionAndAnswers);
+                res.status(201).json({status: 1,questionAndAnswers:questionAndAnswers});
             }
             else {
                 console.log("No Questions Found!");
-                res.status(201).json({status: 0});
+                res.status(201).json({status: -1});
             }
         }
     },sqlGetAllQuestions);

@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89f1f119-8725-4b59-b765-a56457d8b7ca" name="Default Changelist" comment="c">
-      <change afterPath="$PROJECT_DIR$/backend/routes/categories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentAdvisingDB/execute.sql" beforeDir="false" afterPath="$PROJECT_DIR$/StudentAdvisingDB/execute.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentAdvisingDB/readme" beforeDir="false" afterPath="$PROJECT_DIR$/StudentAdvisingDB/readme" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/categories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/signin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/usefulFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/usefulFunctions.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,79 +52,82 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="42" />
+          <entry key="js" value="46" />
           <entry key="json" value="2" />
-          <entry key="sql" value="44" />
+          <entry key="readme" value="1" />
+          <entry key="sql" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="42" />
-          <entry key="SQL" value="44" />
+          <entry key="JavaScript" value="46" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="SQL" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="861" />
+          <entry key="js" value="912" />
           <entry key="json" value="3" />
-          <entry key="sql" value="9" />
+          <entry key="readme" value="1" />
+          <entry key="sql" value="28" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="861" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SQL" value="9" />
+          <entry key="JavaScript" value="912" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="SQL" value="28" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="42" column="13" lean-forward="true" selection-start-line="41" selection-start-column="50" selection-end-line="42" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="480">
+              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/routes/signin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/routes/questionAndAnswer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="25" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_get_category_name.sql">
+        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/5_prc_add_category.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+            <state relative-caret-position="425">
+              <caret line="38" column="60" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/routes/usefulFunctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -141,7 +146,14 @@
       <find>consol</find>
       <find>out</find>
       <find>username</find>
+      <find>advising_ad</find>
+      <find>prc_add_qna</find>
+      <find>Connection clo</find>
+      <find>$PROJECT_DIR$/../../../../../aastha/Documents/GitHub/</find>
     </findStrings>
+    <replaceStrings>
+      <replace>$PROJECT_DIR$/../../</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -150,17 +162,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/StudentAdvisingDB/test_stored_prc.sql" />
-        <option value="$PROJECT_DIR$/backend/routes/usefulFunctions.js" />
-        <option value="$PROJECT_DIR$/backend/routes/signin.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Home.js" />
         <option value="$PROJECT_DIR$/frontend/src/api/API.js" />
         <option value="$PROJECT_DIR$/backend/routes/mysqldb.js" />
-        <option value="$PROJECT_DIR$/backend/routes/signup.js" />
         <option value="$PROJECT_DIR$/backend/package.json" />
         <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_add_qna.sql" />
-        <option value="$PROJECT_DIR$/backend/app.js" />
-        <option value="$PROJECT_DIR$/backend/routes/categories.js" />
+        <option value="$PROJECT_DIR$/StudentAdvisingDB/readme" />
+        <option value="$PROJECT_DIR$/StudentAdvisingDB/execute.sql" />
+        <option value="$PROJECT_DIR$/backend/routes/signup.js" />
+        <option value="$PROJECT_DIR$/backend/routes/signin.js" />
         <option value="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" />
+        <option value="$PROJECT_DIR$/backend/routes/usefulFunctions.js" />
+        <option value="$PROJECT_DIR$/backend/routes/categories.js" />
+        <option value="$PROJECT_DIR$/backend/app.js" />
       </list>
     </option>
   </component>
@@ -1128,12 +1142,12 @@
       <updated>1544142504784</updated>
       <workItem from="1544142506963" duration="532000" />
       <workItem from="1549657360689" duration="1000" />
-      <workItem from="1550082508845" duration="28485000" />
+      <workItem from="1550082508845" duration="31702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29018000" />
+    <option name="totallyTimeSpent" value="32235000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1151,8 +1165,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32959184" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4996986" weight="0.3122449" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4996986" visible="true" weight="0.3122449" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50030136" side_tool="true" weight="0.3265306" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1277,13 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/usefulFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" lean-forward="true" selection-start-column="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/test_stored_prc.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1298,24 +1305,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/signup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_get_question_answer.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_user_signin.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1326,13 +1319,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_get_category_name.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1340,24 +1326,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_user_signin.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        <state relative-caret-position="181">
+          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_add_category.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/execute.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/1_create_schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" selection-start-column="22" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/routes/signin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="90">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/6_prc_add_qna.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/usefulFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/routes/questionAndAnswer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="25" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/5_prc_add_category.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="38" column="60" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="42" column="13" lean-forward="true" selection-start-line="41" selection-start-column="50" selection-end-line="42" selection-end-column="13" />
         </state>
       </provider>
     </entry>

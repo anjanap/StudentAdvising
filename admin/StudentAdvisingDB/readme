@@ -7,4 +7,4 @@ cd usr/local/mysql/bin/
 
 3) Then run the following command - change the path to location where files are located on your machine
 
- source /Users/aastha/Documents/GitHub/StudentAdvising/admin/StudentAdvisingDB/execute.sql
+ source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/execute.sql

@@ -30,5 +30,6 @@ app.use('/deleteQuestion',questionAndAnswer.deleteQuestion);
 app.use('/getAllQuestions',questionAndAnswer.getAllQuestions);
 app.use('/getAllDeletedQuestions',questionAndAnswer.getAllDeletedQuestions);
 app.use('/getAllCategories',categories.getAllCategories);
+app.use('/setCategory',categories.setCategory);
 
 module.exports = app;
