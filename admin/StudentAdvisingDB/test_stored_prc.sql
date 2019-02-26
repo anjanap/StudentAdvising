@@ -45,7 +45,6 @@ call advising.prc_update_qna(1,1,
 select @result;
 
 
-
 call advising.prc_delete_qna(1,1,@result);
 select @result;
 

@@ -1,10 +1,8 @@
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/1_create_schema.sql
 
-
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/2_create_table_adminschema.sql
 
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/3_create_table_advising.sql
-
 
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/4_insert_statements_qna.sql
 
@@ -18,7 +16,10 @@ source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingD
 
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/9_prc_get_question_answer.sql
 
-
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/10_prc_sign_up.sql
 
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/11_prc_user_signin.sql
+
+source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/prc_delete_qna.sql
+
+source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/prc_update_qna.sql

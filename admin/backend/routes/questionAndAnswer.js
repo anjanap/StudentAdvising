@@ -1,4 +1,3 @@
-let mysqlDB=require('./mysqldb');
 let usefulFunctions = require('./usefulFunctions');
 
 exports.setQuestionAndAnswer = function(req,res) {
@@ -27,45 +26,54 @@ exports.setQuestionAndAnswer = function(req,res) {
     },sqlSetQuestionAndAnswer);
 };
 
-exports.editQuestion = function(req,res) {
+exports.editQuestionAndAnswer = function(req,res) {
 
-    let id=req.body.id;
-    let question=req.body.question;
+    let questionId=req.body.questionId;
+    let answerId=req.body.answerId;
     let answer=req.body.answer;
-    //console.log(question);
-    //console.log(answer);
+    let question=req.body.question;
+    let category=req.body.category;
+    let applyTo=req.body.applyTo;
 
-    let sqlUpdate = "UPDATE qna SET question = '"+question+"', answer = '"+answer+"' WHERE id = " +id+ ";";
-    let con=mysqlDB.getConnection();
+    let sqlEditQuestionAndAnswer = "CALL advising.prc_update_qna("+questionId+","+answerId+",'"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
-    con.query(sqlUpdate, function (err, result) {
-        if (err) throw err;
-        else{
-            //todo: update the status code.
-            res.status(201).json({
-                status:     1,
-                message:    "Question and Answer successfully updated."
-            });
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
         }
-    });
+        else
+        {
+            if(results[2][0]['@RetMsg'] === 'Data updated successfully'){
+                res.status(201).json({status: 1});
+            }
+            else if(results[1][0]['@RetMsg'] === 'Invalid answer id sent' || results[1][0]['@RetMsg'] === 'Invalid question id sent.'){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlEditQuestionAndAnswer);
 };
 
-exports.deleteQuestion = function(req,res) {
+exports.deleteQuestionAndAnswer = function(req,res) {
 
-    let id=req.body.id;
-    let sqlDelete = "UPDATE qna SET deleted = 1 WHERE id = " +id+ ";";
-    let con=mysqlDB.getConnection();
+    let questionId=req.body.questionId;
+    let answerId=req.body.answerId;
 
-    con.query(sqlDelete, function (err, result) {
-        if (err) throw err;
-        else{
-            //todo: update the status code.
-            res.status(201).json({
-                status:     1,
-                message:    "Question and Answer successfully deleted."
-            });
+    let sqlDeleteQuestionAndAnswer= "CALL advising.prc_delete_qna("+answerId+","+questionId+",@RetMsg); select @RetMsg; ";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
         }
-    });
+        else
+        {
+            if(results[2][0]['@RetMsg'] === 'Data Deleted successfully'){
+                res.status(201).json({status: 1});
+            }
+            else if(results[1][0]['@RetMsg'] === 'Invalid answer id sent' || results[1][0]['@RetMsg'] === 'Invalid question id sent.'){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlDeleteQuestionAndAnswer);
 };
 
 
