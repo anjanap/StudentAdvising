@@ -74,10 +74,6 @@ class ViewAll extends Component {
    }
 
    handleEdit = (input) =>{
-     alert(input.editQuestion);
-     alert(input.editAnswer);
-     alert(input.editCategory);
-     alert(input.editApplyTo);
      var payload= ({question: input.editQuestion,
                     answer: input.editAnswer,
                     category: input.editCategory,
@@ -89,8 +85,13 @@ class ViewAll extends Component {
          .then((output) => {
            console.log("check: "+output.status);
            if(output.status===1){
-            alert("Delete successful");
-            //this.getAllquestions();
+            alert("Edit successful");
+            this.getAllquestions();
+            this.setState({open: false});
+          }
+          else {
+            alert("Unable to edit");
+            this.setState({open: false});
           }
         })
    }
