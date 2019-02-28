@@ -6,7 +6,7 @@ exports.signIn= function(req,res) {
     //console.log(emailAddress);
     //console.log(password);
 
-    let sqlQuery= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name); select @result,@f_name, @l_name; ";
+    let sqlSignIn= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name); select @result,@f_name, @l_name; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -22,7 +22,7 @@ exports.signIn= function(req,res) {
                 res.status(201).json({status: 1,"firstName": results[1][0]['@f_name'],"lastName": results[1][0]['@l_name'] });
             }
         }
-    },sqlQuery);
+    },sqlSignIn);
   };
 
 

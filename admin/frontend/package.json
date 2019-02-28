@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "datatables.net": "^1.10.19",
+    "datatables.net-buttons": "^1.5.4",
+    "datatables.net-buttons-dt": "^1.5.4",
+    "datatables.net-dt": "^1.10.19",
     "jquery": "^3.3.1",
+    "mdbootstrap": "^4.7.3",
     "mdbreact": "^4.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
