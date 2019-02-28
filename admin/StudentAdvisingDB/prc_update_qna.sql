@@ -77,7 +77,7 @@ BEGIN
 											
                                     
                                     SELECT id into cat_id FROM Categories where category_name = cat_name;
-									SELECT id into app_id from Applies_To where apply_to = app_id;
+									SELECT id into app_id from Applies_To where apply_to = app_to;
 									
 									UPDATE Questions SET question = ques,
 																			question_hash = ques_hash,
