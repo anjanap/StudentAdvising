@@ -50,7 +50,7 @@ BEGIN
                                 -- check that answer you are updating is not assigned to some other question
                                       IF NOT EXISTS(SELECT * FROM Answers WHERE answer_hash = ans_hash)
 										THEN  
-                                             SELECT COUNT(*) AS cnt FROM Questions WHERE answer_id = ans_id;
+                                             SELECT COUNT(*) AS cnt FROM Questions WHERE answer_id = old_ans_id;
 											 IF cnt = 1 
 											 THEN
 												
