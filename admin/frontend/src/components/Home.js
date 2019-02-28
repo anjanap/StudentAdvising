@@ -17,7 +17,7 @@ class Home extends Component {
         lastname: '',
         phone: '',
         countrycode: '+1',
-        validateuser: 'anj pra',
+        validateuser: 'anj',
         message: '',
         formValid: false,
         displayErrors: {email: '', password: ''},
