@@ -13,7 +13,7 @@ class NewQuestion extends Component {
         category: '',
         appliesto: '',
         categoriesList: [],
-        appliestoList: ['Current', 'Prospective Student', 'Both'],
+        appliestoList: ['Current Student', 'Prospective Student', 'Both'],
         formValid: false,
         questionValid: false,
         answerValid: false,
@@ -68,12 +68,12 @@ class NewQuestion extends Component {
     }
 
     addNew = (input) =>{
-      var payload= ({question: input.question, answer: input.answer, category: input.category, appliesTo: input.appliesto});
+      var payload= ({question: input.question, answer: input.answer, category: input.category, applyTo: input.appliesto});
       //alert(this.state.category);
       API.setQuestionAndAnswer(payload)
           .then((output) => {
             console.log("check: "+output);
-              if (output === 1) {
+              if (output.status === 1) {
               ReactDOM.findDOMNode(this.refs.ques).value = "";
               ReactDOM.findDOMNode(this.refs.ans).value = "";
               ReactDOM.findDOMNode(this.refs.catg).value = "";
@@ -142,7 +142,7 @@ class NewQuestion extends Component {
                       <div className="row form-group">
                         <div className="col-sm-2 col-md-2 col-lg-2" />
                         <div className="col-sm-8 col-md-8 col-lg-8">
-                        <select ref="catg" className="form-control" onChange={(event) => {this.setState({appliesto: event.target.value});}} value={this.state.appliesto}>
+                        <select ref="app" className="form-control" onChange={(event) => {this.setState({appliesto: event.target.value});}} value={this.state.appliesto}>
                             <option key="0" value="" selected="selected" disabled>Students*</option>
                             {
                             this.state.appliestoList.map(a=>{

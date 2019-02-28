@@ -5,8 +5,7 @@ exports.setQuestionAndAnswer = function(req,res) {
     let answer=req.body.answer;
     let category=req.body.category;
     let applyTo=req.body.applyTo;
-    //console.log(question);
-    //console.log(answer);
+    console.log(req.body);
 
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
@@ -34,7 +33,7 @@ exports.editQuestionAndAnswer = function(req,res) {
     let question=req.body.question;
     let category=req.body.category;
     let applyTo=req.body.applyTo;
-
+console.log(req.body);
     let sqlEditQuestionAndAnswer = "CALL advising.prc_update_qna("+questionId+","+answerId+",'"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
