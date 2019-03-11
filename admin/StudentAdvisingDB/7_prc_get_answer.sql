@@ -33,7 +33,7 @@ BEGIN
 			']') AS result
 				FROM Questions q INNER JOIN Answers a ON q.answer_id = a.id
 				INNER JOIN Categories c ON c.id = q.category_id
-				INNER JOIN applies_to ap ON q.apply_to_id = ap.id
+				INNER JOIN Applies_To ap ON q.apply_to_id = ap.id
 				WHERE q.question_hash = ques_hash;
                
 		ELSE

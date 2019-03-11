@@ -1,8 +1,8 @@
 use advising;
 
-insert into  applies_to(apply_to) values('Current Student');
-insert into  applies_to(apply_to) values('Prospective Student');
-insert into  applies_to(apply_to) values('Both');
+insert into  Applies_To(apply_to) values('Current Student');
+insert into  Applies_To(apply_to) values('Prospective Student');
+insert into  Applies_To(apply_to) values('Both');
 
 insert into Categories(Category_name) values ('General Advising');
 insert into Categories(Category_name) values ('Academic Policy');

@@ -27,7 +27,7 @@ BEGIN
     ']') as result
 		FROM Questions q inner join Answers a on q.answer_id = a.id
 		inner join Categories c on c.id = q.category_id
-        inner join applies_to ap on q.apply_to_id = ap.id;
+        inner join Applies_To ap on q.apply_to_id = ap.id;
 
 END $$
 
