@@ -15,6 +15,7 @@ CREATE PROCEDURE prc_get_unanswered_questions (
 BEGIN
 		SELECT  CONCAT(
     '[', JSON_OBJECT(
+			'id', id,
 			'question', CAST(question AS CHAR(10000) CHARACTER SET utf8),
 			'asked_on', asked_on
 		),

@@ -50,5 +50,7 @@ select @result;
 
 call advising.prc_get_unanswered_questions();
 
+call advising.prc_delete_unaswered_q(1,@result);
+select @result;
     
 
