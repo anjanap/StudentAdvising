@@ -65,7 +65,7 @@ class Home extends Component {
     var payload= ({firstName: input.firstname, lastName: input.lastname, emailAddress: input.username, password: input.password, countryCode: input.countrycode, phoneNumber: input.phone});
     API.signup(payload)
         .then((output) => {
-          console.log("check: "+output);
+          //console.log("check: "+output);
             if (output === 1) {
             ReactDOM.findDOMNode(this.refs.usersignup).value = "";
             ReactDOM.findDOMNode(this.refs.pwdsignup).value = "";
@@ -78,7 +78,7 @@ class Home extends Component {
           else if (output === -1){
               alert("User exists. Try again.");
             }
-  })
+        })
   }
 
   validateField(fieldName, value) {

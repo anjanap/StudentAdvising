@@ -124,3 +124,23 @@ fetch(`${api}/deleteQuestionAndAnswer`, {
   console.log("This is deleteQuestionAndAnswer error");
   return error;
 });
+
+
+
+export const editQuestionAndAnswer = (payload) =>
+fetch(`${api}/editQuestionAndAnswer`, {
+  method: 'PUT',
+  headers: {
+    ...headers,
+    'Content-Type': 'application/json'
+  },
+  credentials:'include',
+  body: JSON.stringify(payload)
+}).then(res=>res.json())
+.then(res => {
+  return res;
+})
+.catch(error => {
+  console.log("This is deleteQuestionAndAnswer error");
+  return error;
+});
