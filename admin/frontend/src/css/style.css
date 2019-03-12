@@ -46,8 +46,28 @@ body {
   padding-top: 26px;
   }
 
+.nav-text {
+     font-family: 'Bree Serif', serif;
+     font-size: 17px;
+     color: #E4E4E7;
+ }
+
+.nav-logo {
+    float: right;
+    font-family: 'Bree Serif', serif;
+    font-size: 48px;
+    margin-top: -20%;
+    margin-right: -45%;
+    color: #E4E4E7;
+}
+
+
 .btn-logout{
-  float: left;
+    float: left;
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: #E4E4E7;
+    margin-left: -20%;
 }
 
 /* td{
@@ -67,4 +87,10 @@ td:nth-of-type(3) {
 
 .stripe1 {
     background-color: #f4fbfc;
+}
+
+
+.page-title{
+    color: #0F5773;
+    font-family: 'Bree Serif', serif;
 }

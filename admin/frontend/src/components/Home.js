@@ -3,10 +3,9 @@ import {withRouter} from 'react-router-dom';
 import NavigationBar from "./NavigationBar";
 import ReactDOM from 'react-dom';
 import * as API from '../api/API';
-// import $ from 'jquery';
-import './style.css';
+import '../css/style.css';
 import DisplayErrors from "./DisplayErrors";
-//import './script.js';
+
 
 class Home extends Component {
 
@@ -17,7 +16,7 @@ class Home extends Component {
         lastname: '',
         phone: '',
         countrycode: '+1',
-        validateuser: 'anj',
+        validateuser: 'Dan Harkey',
         message: '',
         formValid: false,
         displayErrors: {email: '', password: ''},

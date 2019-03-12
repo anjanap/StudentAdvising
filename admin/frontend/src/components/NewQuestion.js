@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import NavigationBar from "./NavigationBar";
 import ReactDOM from 'react-dom';
+import Modal from 'react-responsive-modal';
 import * as API from '../api/API';
-import './style.css';
+import '../css/style.css';
 
 class NewQuestion extends Component {
 
@@ -13,12 +14,28 @@ class NewQuestion extends Component {
         category: '',
         appliesto: '',
         categoriesList: [],
+        newcategory:'',
         appliestoList: ['Current Student', 'Prospective Student', 'Both'],
         formValid: false,
         questionValid: false,
         answerValid: false,
         displayErrors: {question: '', answer: ''},
+        open: false
     };
+
+    onOpenModal = () => {
+        this.setState({
+            open: true
+        });
+    };
+
+    onCloseModal = () => {
+        this.setState({open: false});
+    };
+
+    handleNewCategory = (input) => {
+
+    }
 
     componentWillMount() {
       var r=[], rjson={};
@@ -86,15 +103,32 @@ class NewQuestion extends Component {
           })
     }
 
+    addNewCategory = (input) =>{
+        var payload= ({category: input.newcategory});
+        //alert(this.state.category);
+        API.setQuestionAndAnswer(payload)
+            .then((output) => {
+                if (output.status === 1) {
+                    ReactDOM.findDOMNode(this.refs.newcategory).value = "";
+                    alert("Successfully added");
+                }
+                else if (output === -1){
+                    alert("Category already exist");
+                }
+            })
+    }
+
     render() {
+        const {open} = this.state;
         return (
             <div className="w3-container">
               <div className="row">
               <div className="col-sm-4 col-md-4 col-lg-4" />
               <div className="col-sm-5 col-md-5 col-lg-5">
-                <h2>Add a New Question</h2>
+                <h3 className="page-title">Add a New Question</h3>
               </div>
               </div>
+                <br/>
 
               <div className="row">
                 <div className="col-sm-4 col-md-4 col-lg-4" />
@@ -104,7 +138,7 @@ class NewQuestion extends Component {
                       <div className="row form-group">
                         <div className="col-sm-2 col-md-2 col-lg-2" />
                         <div className="col-sm-8 col-md-8 col-lg-8">
-                          <textarea type="text" ref="ques" placeholder="question*" className="form-control" onChange={(event) => {
+                          <textarea type="text" rows="4" ref="ques" placeholder="question*" className="form-control" onChange={(event) => {
                               const name="question"
                               const value=event.target.value
                               this.setState({question: event.target.value,type:true}, () => {
@@ -115,7 +149,7 @@ class NewQuestion extends Component {
                       <div className="row form-group">
                         <div className="col-sm-2 col-md-2 col-lg-2" />
                         <div className="col-sm-8 col-md-8 col-lg-8">
-                          <textarea type="text" ref="ans" placeholder="answer*" className="form-control" onChange={(event) => {
+                          <textarea type="text" rows="6" ref="ans" placeholder="answer*" className="form-control" onChange={(event) => {
                               const name="answer"
                               const value=event.target.value
                               this.setState({answer: event.target.value,type:true}, () => {
@@ -136,6 +170,10 @@ class NewQuestion extends Component {
                             })
                           }
                         </select>
+                        </div>
+                            <div className="col-sm-1 col-md-1 col-lg-1">
+                            <button type="button" className="btn btn-link btn-sm" style={{align: 'left'}} onClick={() => this.onOpenModal()}>Add New</button>
+
                         </div>
                       </div>
 
@@ -166,6 +204,43 @@ class NewQuestion extends Component {
                     </form>
                 </div>
               </div>
+
+
+                <Modal open={open} onClose={this.onCloseModal} center>
+                    <div className="w3-container">
+                        <div className="row">
+                            <div className="col-sm-2 col-md-2 col-lg-2"/>
+                            <div className="col-sm-10 col-md-10 col-lg-10">
+                                <h3 className="page-title">New Category</h3>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <form>
+
+                                <div className="row form-group">
+                                    <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
+                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" ref="newcategory" placeholder="category name*" className="form-control" onChange={(event) => {
+                                            this.setState({newcategory: event.target.value})}}/>
+                                    </div>
+                                </div>
+
+                                <div className="row form-group">
+                                    <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
+                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-8 col-md-8 col-lg-8">
+                                        <button type="button" className="btn btn-primary home-btn" value="Submit"
+                                                onClick={(event) => this.addNewCategory(this.state)}>Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </Modal>
+
             </div>
         );
     }

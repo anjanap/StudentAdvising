@@ -63,3 +63,5 @@ typings/
 
 # xml files
 .xml
+.idea/encodings.xml
+*.iml
