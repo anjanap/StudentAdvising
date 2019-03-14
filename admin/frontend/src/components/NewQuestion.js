@@ -37,29 +37,33 @@ class NewQuestion extends Component {
 
     }
 
-    componentWillMount() {
-      var r=[], rjson={};
-      this.setState({rows:[]});
-      API.getAllCategories()
-      .then((output) => {
-        if(output.status!=1)
-          alert("No categories in database");
-        var l=output.categoryNames;
-        this.setState({categoriesList: l});
-      });
-     }
+    // componentWillMount() {
+    //   var r=[], rjson={};
+    //   this.setState({rows:[]});
+    //   API.getAllCategories()
+    //   .then((output) => {
+    //     if(output.status!=1)
+    //       alert("No categories in database");
+    //     var l=output.categoryNames;
+    //     this.setState({categoriesList: l});
+    //   });
+    //  }
 
      componentWillMount() {
        var r=[], rjson={};
        this.setState({rows:[]});
-       API.getAllCategories()
-       .then((output) => {
-         if(output.status!=1)
-           alert("No categories in database");
-         var l=output.categoryNames;
-         this.setState({categoriesList: l});
-       });
+       this.getAllCategories();
       }
+
+     getAllCategories(){
+         API.getAllCategories()
+             .then((output) => {
+                 if(output.status!=1)
+                     alert("No categories in database");
+                 var l=output.categoryNames;
+                 this.setState({categoriesList: l});
+             });
+     }
 
     validateData(fieldName, value) {
       let fieldValidationErrors = this.state.displayErrors;
@@ -106,10 +110,12 @@ class NewQuestion extends Component {
     addNewCategory = (input) =>{
         var payload= ({category: input.newcategory});
         //alert(this.state.category);
-        API.setQuestionAndAnswer(payload)
+        API.setCategory(payload)
             .then((output) => {
                 if (output.status === 1) {
                     ReactDOM.findDOMNode(this.refs.newcategory).value = "";
+                    this.getAllCategories();
+                    this.setState({open: false});
                     alert("Successfully added");
                 }
                 else if (output === -1){

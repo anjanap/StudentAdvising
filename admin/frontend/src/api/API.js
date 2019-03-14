@@ -161,3 +161,43 @@ export const setCategory = (payload) =>
             console.log("This is setCategory error");
             return error;
         });
+
+
+// //get all unanswered
+export const getAllUnansweredQuestions = (payload) =>
+    fetch(`${api}/getAllUnansweredQuestions`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is getAllCategories error");
+            return error;
+        });
+
+
+//delete question and answer
+export const deleteUnansweredQuestion = (payload) =>
+    fetch(`${api}/deleteUnansweredQuestion`, {
+        method: 'DELETE',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is deleteQuestionAndAnswer error");
+            return error;
+        });

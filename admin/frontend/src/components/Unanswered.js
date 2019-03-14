@@ -13,31 +13,66 @@ import '../css/style.css';
 class Unanswered extends Component {
 
     state = {
-        unansweredList: [{question: "anjana"}],
+        unansweredList: [],
         categoriesList: [],
-        appliestoList: ['Current Student', 'Prospective Student', 'Both']
+        appliestoList: ['Current Student', 'Prospective Student', 'Both'],
+        question: '',
+        answer: '',
+        category: '',
+        appliesto: '',
+        formValid: false,
+        questionValid: false,
+        answerValid: false,
+        displayErrors: {question: '', answer: ''},
+        unansweredQuestion:'',
+        unansweredQuestionId:''
     };
 
     componentWillMount() {
         this.getUnansweredquestions();
+        this.getAllCategories();
+    }
+
+    getAllCategories(){
         API.getAllCategories()
             .then((output) => {
-                if (output.status != 1)
+                if(output.status!=1)
                     alert("No categories in database");
-                var l = output.categoryNames;
+                var l=output.categoryNames;
                 this.setState({categoriesList: l});
             });
+    }
+
+    addNew = (input) =>{
+        var payload= ({question: input.question, answer: input.answer, category: input.category, applyTo: input.appliesto});
+        //alert(this.state.category);
+        API.setQuestionAndAnswer(payload)
+            .then((output) => {
+                console.log("check: "+output);
+                if (output.status === 1) {
+                    this.setState({open: false});
+                    var payloadDelete=({questionId: this.state.unansweredQuestionId});
+                    API.deleteUnansweredQuestion(payloadDelete)
+                        .then((output) => {
+                            if(output.status==1) {
+                                this.getUnansweredquestions();
+                                alert("Successful added");
+                            }
+                        });
+
+
+                }
+                else if (output === -1){
+                    alert("Question already exist");
+                }
+            })
     }
 
     onOpenModal = (data) => {
         console.log("edit: " + data.question);
         this.setState({
-            editQuestion: data.question,
-            editAnswer: data.answer,
-            editCategory: data.category,
-            editApplyTo: data.applyTo,
-            editQuestionId: data.questionId,
-            editAnswerId: data.answerId,
+            question: data.question,
+            unansweredQuestionId: data.id,
             open: true
         });
     };
@@ -47,52 +82,58 @@ class Unanswered extends Component {
     };
 
     getUnansweredquestions() {
-        //this.setState({unansweredList: []});
-        // API.getAllQuestions()
-        //     .then((output) => {
-        //         if (output.status != 1)
-        //             alert("No data in database");
-        //         var qnalist = output.questionAndAnswers;
-        //         this.setState({unansweredList: qnalist});
-        //
-        //         $(document).ready(
-        //             function () {
-        //                 $('#dtMaterialDesignExample').DataTable();
-        //                 $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
-        //                     $(this).parent().append($(this).children());
-        //                 });
-        //                 $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('input').each(function () {
-        //                     $('input').attr("placeholder", "Search");
-        //                     $('input').removeClass('form-control-sm');
-        //                 });
-        //                 $('#dtMaterialDesignExample_wrapper .dataTables_length').addClass('d-flex flex-row');
-        //                 $('#dtMaterialDesignExample_wrapper .dataTables_filter').addClass('md-form');
-        //                 $('#dtMaterialDesignExample_wrapper select').removeClass(
-        //                     'custom-select custom-select-sm form-control form-control-sm');
-        //                 $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
-        //             }
-        //         );
-        //     });
+        this.setState({unansweredList: []});
+        API.getAllUnansweredQuestions()
+            .then((output) => {
+                if (output.status != 1)
+                    alert("No data in database");
+                var qlist = output.unansweredQuestions;
+                this.setState({unansweredList: qlist});
+
+                $(document).ready(
+                    function () {
+                        $('#dtMaterialDesignExample').DataTable();
+                        $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
+                            $(this).parent().append($(this).children());
+                        });
+                        $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('input').each(function () {
+                            $('input').attr("placeholder", "Search");
+                            $('input').removeClass('form-control-sm');
+                        });
+                        $('#dtMaterialDesignExample_wrapper .dataTables_length').addClass('d-flex flex-row');
+                        $('#dtMaterialDesignExample_wrapper .dataTables_filter').addClass('md-form');
+                        $('#dtMaterialDesignExample_wrapper select').removeClass(
+                            'custom-select custom-select-sm form-control form-control-sm');
+                        $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
+                    }
+                );
+            });
     }
 
-    handleAdd = (input) =>{
-        // var payload= ({question: input.question, answer: input.answer, category: input.category, applyTo: input.appliesto});
-        // //alert(this.state.category);
-        // API.setQuestionAndAnswer(payload)
-        //     .then((output) => {
-        //         console.log("check: "+output);
-        //         if (output.status === 1) {
-        //             ReactDOM.findDOMNode(this.refs.ques).value = "";
-        //             ReactDOM.findDOMNode(this.refs.ans).value = "";
-        //             ReactDOM.findDOMNode(this.refs.catg).value = "";
-        //             ReactDOM.findDOMNode(this.refs.app).value = "";
-        //             alert("Successful added");
-        //         }
-        //         else if (output === -1){
-        //             alert("Question already exist");
-        //         }
-        //     })
+
+    validateData(fieldName, value) {
+        let fieldValidationErrors = this.state.displayErrors;
+        let questionValid = this.state.questionValid;
+        let answerValid = this.state.answerValid;
+        switch(fieldName) {
+            case 'question':
+                questionValid = value.length >= 1;
+                fieldValidationErrors.question = questionValid ? '': ' is too short';
+                break;
+            case 'answer':
+                answerValid = value.length >= 1;
+                fieldValidationErrors.answer = answerValid ? '': ' is too short';
+                break;
+            default:
+                break;
+        }
+        this.setState({displayErrors: fieldValidationErrors, questionValid: questionValid,answerValid: answerValid}, this.validateForm);
     }
+
+    validateForm() {
+        this.setState({formValid: this.state.questionValid && this.state.answerValid});
+    }
+
 
     render() {
         const {open} = this.state;
@@ -149,7 +190,7 @@ class Unanswered extends Component {
                         <div className="row">
                             <div className="col-sm-4 col-md-4 col-lg-4"/>
                             <div className="col-sm-8 col-md-8 col-lg-8">
-                                <h3 className="page-title">Add</h3>
+                                <h3 className="page-title">Answer Question</h3>
                             </div>
                         </div>
 
@@ -157,13 +198,29 @@ class Unanswered extends Component {
                             <form>
 
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2" />
                                     <div className="col-sm-8 col-md-8 col-lg-8">
-                                    <textarea type="text" rows="6" ref="ans" placeholder="answer*" className="form-control"/>
+                          <textarea type="text" rows="4" ref="ques" placeholder="question*" className="form-control" onChange={(event) => {
+                              const name="question"
+                              const value=event.target.value
+                              this.setState({question: event.target.value,type:true}, () => {
+                                  this.validateData(name, value) }); }} value={this.state.question}/>
                                     </div>
                                 </div>
+
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2" />
+                                    <div className="col-sm-8 col-md-8 col-lg-8">
+                          <textarea type="text" rows="6" ref="ans" placeholder="answer*" className="form-control" onChange={(event) => {
+                              const name="answer"
+                              const value=event.target.value
+                              this.setState({answer: event.target.value,type:true}, () => {
+                                  this.validateData(name, value) }); }}/>
+                                    </div>
+                                </div>
+
+                                <div className="row form-group">
+                                    <div className="col-sm-2 col-md-2 col-lg-2" />
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                                         <select ref="catg" className="form-control" onChange={(event) => {this.setState({category: event.target.value});}} value={this.state.category}>
                                             <option key="0" value="" selected="selected" disabled>Category*</option>
@@ -176,9 +233,14 @@ class Unanswered extends Component {
                                             }
                                         </select>
                                     </div>
+                                    <div className="col-sm-1 col-md-1 col-lg-1" style={{marginLeft:'-23px'}}>
+                                        {/*<button type="button" className="btn btn-link btn-sm" style={{align: 'left'}} onClick={() => this.onOpenModal()}>Add New</button>*/}
+
+                                    </div>
                                 </div>
+
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2" />
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                                         <select ref="app" className="form-control" onChange={(event) => {this.setState({appliesto: event.target.value});}} value={this.state.appliesto}>
                                             <option key="0" value="" selected="selected" disabled>Students*</option>
@@ -192,15 +254,15 @@ class Unanswered extends Component {
                                         </select>
                                     </div>
                                 </div>
+
                                 <div className="row form-group">
                                     <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
                                     <div className="col-sm-2 col-md-2 col-lg-2"/>
                                     <div className="col-sm-8 col-md-8 col-lg-8">
-                                        <button type="button" className="btn btn-primary home-btn" value="Submit"
-                                                onClick={(event) => this.handleAdd(this.state)}>Add
-                                        </button>
+                                        <button type="button" className="btn btn-primary home-btn" disabled={!this.state.formValid}  value="Submit" onClick={(event) => this.addNew(this.state)}>Add</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

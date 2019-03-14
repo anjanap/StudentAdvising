@@ -181,7 +181,7 @@ class ViewAll extends Component {
                     </div>
                 </div>
 
-                <Modal open={open} onClose={this.onCloseModal} center>
+                <Modal open={open} onClose={this.onCloseModal} center >
                     <div className="w3-container">
                         <div className="row">
                             <div className="col-sm-4 col-md-4 col-lg-4"/>
@@ -193,7 +193,10 @@ class ViewAll extends Component {
                         <div className="row">
                             <form>
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-1 col-md-1 col-lg-1"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2">
+                                        <label>Question</label>
+                                    </div>
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                             <textarea type="text" rows="4" ref="ques" placeholder="question*" className="form-control"
                                       onChange={(event) => {
@@ -202,7 +205,10 @@ class ViewAll extends Component {
                                     </div>
                                 </div>
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-1 col-md-1 col-lg-1"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2">
+                                        <label>Answer</label>
+                                    </div>
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                             <textarea type="text" rows="6" ref="ans" placeholder="answer*" className="form-control"
                                       onChange={(event) => {
@@ -211,7 +217,10 @@ class ViewAll extends Component {
                                     </div>
                                 </div>
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-1 col-md-1 col-lg-1"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2">
+                                        <label>Category</label>
+                                    </div>
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                                         <select ref="catg" className="form-control" onChange={(event) => {
                                             this.setState({editCategory: event.target.value});
@@ -228,7 +237,10 @@ class ViewAll extends Component {
                                     </div>
                                 </div>
                                 <div className="row form-group">
-                                    <div className="col-sm-2 col-md-2 col-lg-2"/>
+                                    <div className="col-sm-1 col-md-1 col-lg-1"/>
+                                    <div className="col-sm-2 col-md-2 col-lg-2">
+                                        <label>Student</label>
+                                    </div>
                                     <div className="col-sm-8 col-md-8 col-lg-8">
                                         <select ref="app" className="form-control" onChange={(event) => {
                                             this.setState({editApplyTo: event.target.value});
