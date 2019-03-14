@@ -6,29 +6,29 @@
 	},
 	"item": [
 		{
-			"name": "editQuestion",
+			"name": "editQuestionAndAnswer",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"rr 3\",\n\t\"answer\": \"rr 3\",\n\t\"id\": 16\n}"
+					"raw": "{\n    \"question\": \"what are Dr DANS office hours?\",\n    \"answer\": \"mon to fri 10 to 12\",\n    \"category\": \"Academic Policy\",\n    \"applyTo\": \"Prospective Student\",\n    \"questionId\": 2,\n    \"answerId\": 2\n}"
 				},
 				"url": {
-					"raw": "localhost:3004/editQuestion",
+					"raw": "localhost:3004/editQuestionAndAnswer",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"editQuestion"
+						"editQuestionAndAnswer"
 					]
 				}
 			},
@@ -93,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "setQuestion",
+			"name": "setQuestionAndAnswer",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -106,7 +106,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"what are Dr Brucks office hours?\",\n\t\"answer\": \"mon to fri 10 to 12\",\n\t\"category\" : \"Academic Policy\",\n\t\"appliesTo\" : \"Prospective Student\"\n}"
+					"raw": "{\n\t\"question\" : \"q2\",\n\t\"answer\": \"a2\",\n\t\"category\" : \"General Advising\",\n\t\"applyTo\" : \"Prospective Student\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/setQuestionAndAnswer",
@@ -151,7 +151,7 @@
 			"response": []
 		},
 		{
-			"name": "deleteQuestion",
+			"name": "deleteQuestionAndAnswer",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -164,23 +164,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\" : 16\n}"
+					"raw": "{\n            \"questionId\": 3,\n            \"answerId\": 3\n}"
 				},
 				"url": {
-					"raw": "localhost:3004/deleteQuestion",
+					"raw": "localhost:3004/deleteQuestionAndAnswer",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"deleteQuestion"
+						"deleteQuestionAndAnswer"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "getAllQuestions",
+			"name": "getAllQuestionsAndAnswers",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -189,13 +189,64 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3004/getAllQuestions",
+					"raw": "localhost:3004/getAllQuestionsAndAnswers",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"getAllQuestions"
+						"getAllQuestionsAndAnswers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUnansweredQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllUnansweredQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllUnansweredQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAnswer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\" : \"what are Dr Brucks office hours?\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/getAnswer",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAnswer"
 					]
 				}
 			},
