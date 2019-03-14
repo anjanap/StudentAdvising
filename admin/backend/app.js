@@ -29,7 +29,7 @@ app.use('/editQuestionAndAnswer',questionAndAnswer.editQuestionAndAnswer);
 app.use('/deleteQuestionAndAnswer',questionAndAnswer.deleteQuestionAndAnswer);
 app.use('/getAllQuestionsAndAnswers',questionAndAnswer.getAllQuestionsAndAnswers);
 app.use('/getAnswer',questionAndAnswer.getAnswer);
-app.use('/getAllDeletedQuestions',questionAndAnswer.getAllDeletedQuestions);
+app.use('/getAllUnansweredQuestions',questionAndAnswer.getAllUnansweredQuestions);
 app.use('/getAllCategories',categories.getAllCategories);
 app.use('/setCategory',categories.setCategory);
 

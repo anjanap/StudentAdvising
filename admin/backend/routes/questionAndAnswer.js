@@ -148,23 +148,33 @@ exports.getAnswer = function(req,res) {
     },sqlGetAnswer);
 };
 
-exports.getAllDeletedQuestions = function(req,res) {
+exports.getAllUnansweredQuestions = function(req,res) {
 
-    let sqlGetAllDeletedQuestions = "SELECT * from qna WHERE deleted = 1;";
+    let sqlGetAllUnansweredQuestions = "call advising.prc_get_unanswered_questions();";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
-            res.status(201).json({status: 0, message: "Server Error found: " + err});
+            throw err;
         }
         else
         {
+
             if(results.length > 0){
-                res.status(201).json({output:results, status: 1});
+                let unansweredQuestions = [];
+                results[0].forEach(function(element) {
+                    let jsonObj = {
+                        question    : JSON.parse(element.result)[0].question,
+                    };
+                    unansweredQuestions.push(jsonObj);
+                });
+
+                res.status(201).json({status: 1,unansweredQuestions:unansweredQuestions});
             }
             else {
                 console.log("No Questions Found!");
-                res.status(201).json({status: 0});
+                res.status(201).json({status: -1});
             }
         }
-    },sqlGetAllDeletedQuestions);
+
+    },sqlGetAllUnansweredQuestions);
 };
