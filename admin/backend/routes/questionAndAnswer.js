@@ -164,6 +164,7 @@ exports.getAllUnansweredQuestions = function(req,res) {
                 results[0].forEach(function(element) {
                     let jsonObj = {
                         question    : JSON.parse(element.result)[0].question,
+                        id    : JSON.parse(element.result)[0].id
                     };
                     unansweredQuestions.push(jsonObj);
                 });
@@ -177,4 +178,26 @@ exports.getAllUnansweredQuestions = function(req,res) {
         }
 
     },sqlGetAllUnansweredQuestions);
+};
+
+exports.deleteUnansweredQuestion = function(req,res) {
+
+    let questionId=req.body.questionId;
+
+    let sqlDeleteUnansweredQuestion = "call advising.prc_delete_unaswered_q("+questionId+",@RetMsg); select @RetMsg;";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results[1][0]['@RetMsg'] === 'Data Deleted successfully'){
+                res.status(201).json({status: 1});
+            }
+            else if(results[1][0]['@RetMsg'] === 'Invalid question id sent.'){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlDeleteUnansweredQuestion);
 };

@@ -25,3 +25,5 @@ source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingD
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/prc_update_qna.sql
 
 source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/prc_get_unanswered_questions.sql
+
+source /Users/ujjvalsoni/Desktop/CMPE295A/StudentAdvising/admin/StudentAdvisingDB/prc_delete_unaswered_q.sql
