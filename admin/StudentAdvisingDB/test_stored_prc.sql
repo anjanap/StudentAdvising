@@ -31,7 +31,7 @@ select * from answers;
 
 call advising.prc_add_qna('Yes','Does Dr Brucks have office hours on friday?','General Advising','Current Student', @result);
 select @result;
-call advising.prc_get_category();
+call advising.prc_add_qna();
 
 call advising.prc_add_category('Changing Your Major',@result);
 select @result;
