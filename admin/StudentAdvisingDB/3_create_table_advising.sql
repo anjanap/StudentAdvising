@@ -20,7 +20,7 @@ CREATE TABLE Categories
 CREATE TABLE Answers
 (
 id										INT AUTO_INCREMENT   NOT NULL,
-answer							BLOB NOT NULL,
+answer							TEXT NOT NULL,
 answer_hash					VARCHAR(255) NOT NULL,
 updated_on						DateTime NOT NULL,
 PRIMARY KEY(id,updated_on),
@@ -38,7 +38,7 @@ UNIQUE KEY(apply_to)
 CREATE TABLE Questions
 (
 id										INT AUTO_INCREMENT   NOT NULL,
-question							BLOB NOT NULL,
+question							TEXT NOT NULL,
 question_hash					VARCHAR(255) NOT NULL,
 category_id						INT	NOT NULL,
 answer_id						INT NULL,
@@ -59,5 +59,7 @@ asked_on						DATETIME	NOT NULL,
 PRIMARY KEY(id)
 );
 
+
+ALTER TABLE advising.Questions ADD FULLTEXT(question);
 
 
