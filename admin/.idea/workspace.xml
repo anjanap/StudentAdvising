@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89f1f119-8725-4b59-b765-a56457d8b7ca" name="Default Changelist" comment="c">
-      <change beforePath="$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql" beforeDir="false" afterPath="$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentAdvisingDB/prc_add_applies_to.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentAdvisingDB/prc_get_applies_to.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/appliesTo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/categories.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,38 +20,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/test_stored_prc.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/routes/questionAndAnswer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="220" column="36" selection-start-line="220" selection-start-column="36" selection-end-line="220" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state relative-caret-position="534">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/routes/appliesTo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/5_prc_add_category.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_add_applies_to.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="34" column="48" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="702">
+              <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -59,6 +71,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="SQL Script" />
       </list>
     </option>
   </component>
@@ -86,9 +99,13 @@
       <find>$PROJECT_DIR$/../../../../../aastha/Documents/GitHub/</find>
       <find>get</find>
       <find>prc_match_unaswered_q_to_existing_q</find>
+      <find>categories</find>
+      <find>cat_name</find>
+      <find>cat</find>
     </findStrings>
     <replaceStrings>
       <replace>$PROJECT_DIR$/../../</replace>
+      <replace>AppliesTo</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -102,7 +119,6 @@
         <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_add_qna.sql" />
         <option value="$PROJECT_DIR$/StudentAdvisingDB/readme" />
         <option value="$PROJECT_DIR$/backend/routes/usefulFunctions.js" />
-        <option value="$PROJECT_DIR$/backend/routes/categories.js" />
         <option value="$PROJECT_DIR$/backend/routes/signin.js" />
         <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_update_qna.sql" />
         <option value="$PROJECT_DIR$/StudentAdvisingDB/test_stored_prc.sql" />
@@ -113,8 +129,12 @@
         <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_user_update_signup.sql" />
         <option value="$PROJECT_DIR$/backend/routes/signup.js" />
         <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql" />
-        <option value="$PROJECT_DIR$/backend/app.js" />
         <option value="$PROJECT_DIR$/backend/routes/questionAndAnswer.js" />
+        <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_get_applies_to.sql" />
+        <option value="$PROJECT_DIR$/backend/routes/categories.js" />
+        <option value="$PROJECT_DIR$/StudentAdvisingDB/prc_add_applies_to.sql" />
+        <option value="$PROJECT_DIR$/backend/routes/appliesTo.js" />
+        <option value="$PROJECT_DIR$/backend/app.js" />
       </list>
     </option>
   </component>
@@ -208,7 +228,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54611000" />
+    <option name="totallyTimeSpent" value="55873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -243,6 +263,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -350,13 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/5_prc_add_category.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="38" column="60" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/9_prc_get_question_answer.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -396,13 +412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="137" selection-start-line="137" selection-end-line="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -462,6 +471,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/test_stored_prc.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -469,24 +485,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_match_unaswered_q_to_existing_q.sql">
+    <entry file="file://$PROJECT_DIR$/backend/routes/questionAndAnswer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="51" />
+        <state relative-caret-position="228">
+          <caret line="215" column="9" lean-forward="true" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/categories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/5_prc_add_category.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/8_prc_get_category_name.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_add_applies_to.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="34" column="48" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentAdvisingDB/prc_get_applies_to.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/routes/appliesTo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/routes/questionAndAnswer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="220" column="36" selection-start-line="220" selection-start-column="36" selection-end-line="220" selection-end-column="36" />
+        <state relative-caret-position="534">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>

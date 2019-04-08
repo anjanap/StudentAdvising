@@ -9,6 +9,7 @@ let signIn = require('./routes/signin');
 let signUp = require('./routes/signup');
 let questionAndAnswer = require('./routes/questionAndAnswer');
 let categories = require('./routes/categories');
+let appliesTo = require('./routes/appliesTo');
 
 // app.use(logger('dev'));
 
@@ -35,5 +36,7 @@ app.use('/deleteUnansweredQuestion',questionAndAnswer.deleteUnansweredQuestion);
 app.use('/getAllMatchingQuestions',questionAndAnswer.getAllMatchingQuestions);
 app.use('/getAllCategories',categories.getAllCategories);
 app.use('/setCategory',categories.setCategory);
+app.use('/getAllAppliesTo',appliesTo.getAllAppliesTo);
+app.use('/setAppliesTo',appliesTo.setAppliesTo);
 
 module.exports = app;

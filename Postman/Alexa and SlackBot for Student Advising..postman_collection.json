@@ -151,6 +151,35 @@
 			"response": []
 		},
 		{
+			"name": "setAppliesTo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"appliesTo\" : \"Alumni\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/setAppliesTo",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"setAppliesTo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "approveUser",
 			"request": {
 				"method": "POST",
@@ -327,6 +356,28 @@
 					"port": "3004",
 					"path": [
 						"getAllCategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllAppliesTo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllAppliesTo",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllAppliesTo"
 					]
 				}
 			},

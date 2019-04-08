@@ -2,7 +2,7 @@ let usefulFunctions = require('./usefulFunctions');
 
 exports.getAllCategories= function(req,res) {
 
-    let sqlGetAllQuestions = "call advising.prc_get_category();";
+    let sqlGetAllCategories = "call advising.prc_get_category();";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -23,14 +23,14 @@ exports.getAllCategories= function(req,res) {
                 res.status(201).json({status: -1});
             }
         }
-    },sqlGetAllQuestions);
+    },sqlGetAllCategories);
 };
 
 exports.setCategory= function(req,res) {
 
     let category=req.body.category;
 
-    let sqlGetAllQuestions = "call advising.prc_add_category('"+category+"',@RetMsg); select @RetMsg;";
+    let sqlSetCategory = "call advising.prc_add_category('"+category+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -45,5 +45,5 @@ exports.setCategory= function(req,res) {
                 res.status(201).json({status: -1});
             }
         }
-    },sqlGetAllQuestions);
+    },sqlSetCategory);
 };
