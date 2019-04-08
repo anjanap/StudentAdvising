@@ -115,7 +115,7 @@ class ViewAll extends Component {
             .then((output) => {
                 if (output.status === 1) {
                     alert("Delete successful");
-                    this.getAllquestions();
+                    //this.getAllquestions();
                 }
             })
     }
@@ -154,7 +154,7 @@ class ViewAll extends Component {
 
                                 this.state.questionList.map(r => {
                                     return (
-                                        <tr key={Math.random()}>
+                                        <tr key={r.questionId}>
                                             <td>{r.question}</td>
                                             <td>{r.answer}</td>
                                             <td>{r.category}</td>
@@ -225,7 +225,7 @@ class ViewAll extends Component {
                                         <select ref="catg" className="form-control" onChange={(event) => {
                                             this.setState({editCategory: event.target.value});
                                         }} value={this.state.editCategory}>
-                                            <option key="0" value="" selected="selected" disabled>Category*</option>
+                                            <option key="0" value="" defaultValue="selected" disabled>Category*</option>
                                             {
                                                 this.state.categoriesList.map(c => {
                                                     return (
@@ -245,7 +245,7 @@ class ViewAll extends Component {
                                         <select ref="app" className="form-control" onChange={(event) => {
                                             this.setState({editApplyTo: event.target.value});
                                         }} value={this.state.editApplyTo}>
-                                            <option key="0" value="" selected="selected" disabled>Students*</option>
+                                            <option key="0" value="" defaultValue="selected" disabled>Students*</option>
                                             {
                                                 this.state.appliestoList.map(a => {
                                                     return (
