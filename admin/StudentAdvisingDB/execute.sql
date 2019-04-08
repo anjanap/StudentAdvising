@@ -20,10 +20,19 @@ source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/10_prc_sign
 
 source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/11_prc_user_signin.sql
 
-source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/prc_delete_qna.sql
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/12_prc_delete_qna.sql
 
-source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/prc_update_qna.sql
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/13_prc_delete_unaswered_q.sql
 
-source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/prc_get_unanswered_questions.sql
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/14_prc_get_unanswered_questions.sql
 
-source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/prc_delete_unaswered_q
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/15_prc_match_unaswered_q_to_existing_q.sql
+
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/16_prc_update_qna.sql
+
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/17_prc_user_update_signup.sql
+
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/18_prc_get_all_inactive_users.sql
+
+
+
