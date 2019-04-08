@@ -1,3 +1,4 @@
+USE advising_admin;
 
 DROP PROCEDURE IF EXISTS prc_user_update_signup;
 
@@ -26,7 +27,7 @@ BEGIN
                          
               ELSE
 						
-                        SET RetMsg = 'User doesn''t exist';
+                        SET RetMsg = 'User does not exist';
                         
               END IF;
             COMMIT;

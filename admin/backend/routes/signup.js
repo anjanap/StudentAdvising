@@ -1,4 +1,3 @@
-let mysqlDB=require('./mysqldb');
 let usefulFunctions = require('./usefulFunctions');
 
 exports.signUp= function(req,res) {
@@ -30,4 +29,26 @@ exports.signUp= function(req,res) {
             }
         }
     },sqlSignUp);
+};
+
+exports.approveUser = function(req,res) {
+
+    let userId=req.body.userId;
+
+    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+",@RetMsg); select @RetMsg;";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results[1][0]['@RetMsg'] === 'User Active now'){
+                res.status(201).json({status: 1});
+            }
+            else if(results[1][0]['@RetMsg'] === "User does not exist"){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlApproveUser);
 };

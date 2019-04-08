@@ -164,7 +164,7 @@ exports.getAllUnansweredQuestions = function(req,res) {
                 results[0].forEach(function(element) {
                     let jsonObj = {
                         question    : JSON.parse(element.result)[0].question,
-                        id    : JSON.parse(element.result)[0].id
+                        id          : JSON.parse(element.result)[0].id
                     };
                     unansweredQuestions.push(jsonObj);
                 });

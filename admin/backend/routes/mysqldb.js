@@ -1,4 +1,3 @@
-let ejs=require('ejs');
 let mysql=require('mysql');
 
 //local connection
@@ -24,7 +23,5 @@ function getConnection(){
 	});
 	return con;
 }
-
-
 
 exports.getConnection=getConnection;
