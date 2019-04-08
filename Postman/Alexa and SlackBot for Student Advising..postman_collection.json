@@ -282,29 +282,29 @@
 			"response": []
 		},
 		{
-			"name": "getAnswer",
+			"name": "getAllMatchingQuestions",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"what are Dr Brucks office hours?\"\n}"
+					"raw": "{\n\t\"question\" : \"Where can I get a permission number?\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3004/getAnswer",
+					"raw": "localhost:3004/getAllMatchingQuestions",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
-						"getAnswer"
+						"getAllMatchingQuestions"
 					]
 				}
 			},

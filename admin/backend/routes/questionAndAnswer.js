@@ -201,3 +201,33 @@ exports.deleteUnansweredQuestion = function(req,res) {
         }
     },sqlDeleteUnansweredQuestion);
 };
+
+exports.getAllMatchingQuestions = function(req,res) {
+
+    let question=req.body.question;
+
+    let sqlGetAllMatchingQuestions = "call advising.prc_match_unaswered_q_to_existing_q('"+question+"',@RetMsg); select @RetMsg;";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                let questionAndAnswers = [];
+                results[0].forEach(function(element) {
+                    let jsonObj = {
+                        question    :element.question,
+                        answer      :element.answer
+                    };
+                    questionAndAnswers.push(jsonObj);
+                });
+                res.status(201).json({status: 1,questionAndAnswers:questionAndAnswers});
+            }
+            else if(results[1][0]['@RetMsg'] === 'No match found'){
+                res.status(201).json({status: -1});
+            }
+        }
+    },sqlGetAllMatchingQuestions);
+};
