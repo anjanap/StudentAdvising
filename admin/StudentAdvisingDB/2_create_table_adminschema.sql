@@ -17,6 +17,7 @@ CREATE TABLE Login
   country_code 				VARCHAR(10)					NOT NULL,
   phone_number				VARCHAR(50)					NOT NULL,
   login_using_phone		BOOLEAN							NOT NULL,
+  approval_comment		VARCHAR(50)					NULL,
   PRIMARY KEY (id),
   UNIQUE (email_address)
 );

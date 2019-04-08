@@ -53,7 +53,12 @@ call advising.prc_get_unanswered_questions();
 call advising.prc_delete_unaswered_q(1,@result);
 select @result;
 
+
+call advising_admin.prc_user_update_signup(2,'disapprove', @result);
+select @result;
+
 call advising_admin.prc_get_all_inactive_users;
+
 
 
     

@@ -4,6 +4,7 @@ DROP PROCEDURE IF EXISTS prc_user_update_signup;
 DELIMITER $$
 CREATE PROCEDURE prc_user_update_signup(
 				IN user_id 							INT,
+                IN user_action								VARCHAR(50),
                 OUT RetMsg						VARCHAR(50)
 )
 BEGIN
@@ -20,10 +21,14 @@ BEGIN
             
 					IF EXISTS (SELECT * FROM Login WHERE id = user_id)
 						THEN
-                        
-							UPDATE Login SET is_active = true where id = user_id;
-                         
-                         SET RetMsg = 'User Active now';
+							IF LOWER(user_action) = 'approve'
+								THEN
+										UPDATE Login SET is_active = true, approval_comment ='User approved by admin' where id = user_id;
+                                         SET RetMsg = 'User Active now';
+							ELSE
+									UPDATE Login SET is_active = false, approval_comment ='User not approved by admin' where id = user_id;
+                                    SET RetMsg = 'User is still inactive as it was not approved by admin';
+							END IF;
                          
               ELSE
 						
