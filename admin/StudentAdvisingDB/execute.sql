@@ -34,5 +34,7 @@ source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/17_prc_user
 
 source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/18_prc_get_all_inactive_users.sql
 
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/19_prc_add_applies_to.sql
 
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/20_prc_get_applies_to.sql
 
