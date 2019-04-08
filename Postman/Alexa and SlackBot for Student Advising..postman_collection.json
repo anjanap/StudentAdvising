@@ -151,6 +151,35 @@
 			"response": []
 		},
 		{
+			"name": "approveUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\" : 2\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/approveUser",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"approveUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "deleteQuestionAndAnswer",
 			"request": {
 				"method": "DELETE",
