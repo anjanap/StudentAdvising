@@ -311,6 +311,28 @@
 			"response": []
 		},
 		{
+			"name": "getAllInactiveUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/getAllInactiveUsers",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAllInactiveUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "getAllMatchingQuestions",
 			"request": {
 				"method": "POST",
@@ -324,7 +346,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"Where can I get a permission number?\"\n}"
+					"raw": "{\n\t\"questionId\" : 25\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/getAllMatchingQuestions",

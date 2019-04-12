@@ -52,3 +52,42 @@ exports.approveUser = function(req,res) {
         }
     },sqlApproveUser);
 };
+
+exports.getAllInactiveUsers = function(req,res) {
+
+    let sqlGetAllInactiveUsers = "call advising_admin.prc_get_all_inactive_users();";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                let inActiveUsers = [];
+                results[0].forEach(function(element) {
+                    let jsonObj = {
+                        id                  :element.id,
+                        firstName           :element.first_name,
+                        lastName            :element.last_name,
+                        email               :element.email_address,
+                        isActive            :element.is_active,
+                        countryCode         :element.country_code,
+                        phoneNumber         :element.phone_number,
+                        loginUsingPhone     :element.login_using_phone,
+                        approvalComment     :element.approval_comment
+                    };
+
+                    inActiveUsers.push(jsonObj);
+                });
+
+                res.status(201).json({status: 1,inActiveUsers:inActiveUsers});
+            }
+            else {
+                console.log("No InActive Users Found!");
+                res.status(201).json({status: -1});
+            }
+        }
+
+    },sqlGetAllInactiveUsers);
+};

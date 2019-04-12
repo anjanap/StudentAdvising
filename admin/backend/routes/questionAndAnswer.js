@@ -5,7 +5,6 @@ exports.setQuestionAndAnswer = function(req,res) {
     let answer=req.body.answer;
     let category=req.body.category;
     let applyTo=req.body.applyTo;
-    console.log(req.body);
 
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
@@ -33,7 +32,6 @@ exports.editQuestionAndAnswer = function(req,res) {
     let question=req.body.question;
     let category=req.body.category;
     let applyTo=req.body.applyTo;
-console.log(req.body);
     let sqlEditQuestionAndAnswer = "CALL advising.prc_update_qna("+questionId+","+answerId+",'"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
@@ -204,9 +202,9 @@ exports.deleteUnansweredQuestion = function(req,res) {
 
 exports.getAllMatchingQuestions = function(req,res) {
 
-    let question=req.body.question;
+    let questionId=req.body.questionId;
 
-    let sqlGetAllMatchingQuestions = "call advising.prc_match_unaswered_q_to_existing_q('"+question+"',@RetMsg); select @RetMsg;";
+    let sqlGetAllMatchingQuestions = "call advising.prc_match_unaswered_q_to_existing_q('"+questionId+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -219,7 +217,9 @@ exports.getAllMatchingQuestions = function(req,res) {
                 results[0].forEach(function(element) {
                     let jsonObj = {
                         question    :element.question,
-                        answer      :element.answer
+                        answer      :element.answer,
+                        category    :element.category_name,
+                        appliesTo   :element.apply_to
                     };
                     questionAndAnswers.push(jsonObj);
                 });

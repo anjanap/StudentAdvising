@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/signIn', signIn.signIn);
 app.use('/signUp',signUp.signUp);
 app.use('/approveUser',signUp.approveUser);
+app.use('/getAllInactiveUsers',signUp.getAllInactiveUsers);
 app.use('/setQuestionAndAnswer',questionAndAnswer.setQuestionAndAnswer);
 app.use('/editQuestionAndAnswer',questionAndAnswer.editQuestionAndAnswer);
 app.use('/deleteQuestionAndAnswer',questionAndAnswer.deleteQuestionAndAnswer);
