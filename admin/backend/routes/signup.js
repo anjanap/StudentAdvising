@@ -34,8 +34,14 @@ exports.signUp= function(req,res) {
 exports.approveUser = function(req,res) {
 
     let userId=req.body.userId;
+    let userActionFromClient=req.body.userActionFromClient;
+    let userAction="";
 
-    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+",@RetMsg); select @RetMsg;";
+    if(userActionFromClient === 1){
+        userAction = 'approve';
+    }
+
+    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+","+userAction+",@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -46,8 +52,11 @@ exports.approveUser = function(req,res) {
             if(results[1][0]['@RetMsg'] === 'User Active now'){
                 res.status(201).json({status: 1});
             }
-            else if(results[1][0]['@RetMsg'] === "User does not exist"){
+            else if(results[1][0]['@RetMsg'] === "User is still inactive as it was not approved by admin"){
                 res.status(201).json({status: -1});
+            }
+            else if(results[1][0]['@RetMsg'] === "User does not exist"){
+                res.status(201).json({status: 0});
             }
         }
     },sqlApproveUser);
