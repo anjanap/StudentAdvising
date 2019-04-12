@@ -193,7 +193,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userId\" : 2\n}"
+					"raw": "{\n\t\"userId\" : 2,\n\t\"userActionFromClient\" : 1\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/approveUser",
