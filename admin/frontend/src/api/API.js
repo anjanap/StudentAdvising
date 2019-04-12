@@ -201,3 +201,62 @@ export const deleteUnansweredQuestion = (payload) =>
             console.log("This is deleteQuestionAndAnswer error");
             return error;
         });
+
+
+//get inactive users
+export const getAllInactiveUsers = () =>
+    fetch(`${api}/getAllInactiveUsers`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is approveUser error");
+            return error;
+        });
+
+//approve user
+export const approveUser = (payload) =>
+    fetch(`${api}/approveUser`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is approveUser error");
+            return error;
+        });
+
+
+
+export const getAllMatchingQuestions = (payload) =>
+    fetch(`${api}/getAllMatchingQuestions`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is getAllMatchingQuestions error");
+            return error;
+        });
+

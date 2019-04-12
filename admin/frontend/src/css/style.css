@@ -1,19 +1,20 @@
 body {
-  background-color: #E4E4E7;
+    background-color: #E4E4E7;
+    padding-bottom: 25px;
 }
 
-.home-btn{
-  float: left;
-  width: 100%;
+.home-btn {
+    float: left;
+    width: 100%;
 }
 
-.login-title{
-  font-family: 'Bree Serif', serif;
-  font-weight: bold;
+.login-title {
+    font-family: 'Bree Serif', serif;
+    font-weight: bold;
 }
 
 .login-form {
-  width: 500px;
+    width: 500px;
     margin: 20px auto;
 
 }
@@ -26,7 +27,7 @@ body {
 }
 
 .login-form h2 {
-      margin: 0 0 15px;
+    margin: 0 0 15px;
 }
 
 .form-control, .btn {
@@ -40,21 +41,21 @@ body {
 }
 
 .home-h1 {
-  font-family: 'Bree Serif', serif;
-  font-size: 40px;
-  background-color: #061860;
-  color: #E4E4E7;
-  margin-top: 0px;
-  margin-bottom: -20px;
-  height: 100px;
-  padding-top: 26px;
-  }
+    font-family: 'Bree Serif', serif;
+    font-size: 40px;
+    background-color: #061860;
+    color: #E4E4E7;
+    margin-top: 0px;
+    margin-bottom: -20px;
+    height: 100px;
+    padding-top: 26px;
+}
 
 .nav-text {
-     font-family: 'Bree Serif', serif;
-     font-size: 17px;
-     color: #E4E4E7;
- }
+    font-family: 'Bree Serif', serif;
+    font-size: 17px;
+    color: #E4E4E7;
+}
 
 .nav-logo {
     float: right;
@@ -66,7 +67,7 @@ body {
 }
 
 
-.btn-logout{
+.btn-logout {
     float: left;
     font-family: 'Bree Serif', serif;
     font-size: 15px;
@@ -78,22 +79,35 @@ body {
   width: 300px;
 } */
 
-td:nth-of-type(1){
-    width: 230px;
+td:nth-of-type(1) {
+    width: 25%;
 }
+
 td:nth-of-type(2) {
-    width: 340px;
+    width: 31%;
 }
+
 td:nth-of-type(3) {
-    width: 190px;
+    width: 15%;
 }
+
+td:nth-of-type(4) {
+    width: 15%;
+}
+td:nth-of-type(5) {
+     width: 7%;
+ }
+td:nth-of-type(6) {
+    width: 7%;
+}
+
 
 .stripe1 {
     background-color: #f4fbfc;
 }
 
 
-.page-title{
+.page-title {
     color: #0F5773;
     font-family: 'Bree Serif', serif;
 }
@@ -103,13 +117,14 @@ td:nth-of-type(3) {
     border: 2px solid #D3D2D2;
     border-collapse: collapse;
 }
-.table-content-admin{
+
+.table-content-admin {
     border: 2px solid #D3D2D2;
     border-collapse: collapse;
     padding: 15px;
 }
 
-.btn-approve{
+.btn-approve {
     width: 60%;
     margin: 2%;
 }
@@ -123,11 +138,19 @@ td:nth-of-type(3) {
 }
 
 .btn-link {
-    background:none!important;
-    color:#12077F;
-    border:none;
-    padding:0!important;
+    background: none !important;
+    color: #12077F;
+    border: none;
+    padding: 0 !important;
     font: inherit;
-    border-bottom:1px solid #12077F;
+    border-bottom: 1px solid #12077F;
     cursor: pointer;
+}
+
+.paginate_button {
+    margin: 3px;
+}
+
+.table {
+    margin: 4px;
 }

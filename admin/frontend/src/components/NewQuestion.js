@@ -60,8 +60,10 @@ class NewQuestion extends Component {
              .then((output) => {
                  if(output.status!=1)
                      alert("No categories in database");
-                 var l=output.categoryNames;
-                 this.setState({categoriesList: l});
+                 else {
+                     var l = output.categoryNames;
+                     this.setState({categoriesList: l});
+                 }
              });
      }
 

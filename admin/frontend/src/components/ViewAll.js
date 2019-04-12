@@ -49,8 +49,10 @@ class ViewAll extends Component {
             .then((output) => {
                 if (output.status != 1)
                     alert("No categories in database");
-                var l = output.categoryNames;
-                this.setState({categoriesList: l});
+                else {
+                    var l = output.categoryNames;
+                    this.setState({categoriesList: l});
+                }
             });
     }
 
@@ -58,13 +60,16 @@ class ViewAll extends Component {
         this.setState({questionList: []});
         API.getAllQuestions()
             .then((output) => {
-                if (output.status != 1)
+                if (output.status != 1) {
                     alert("No data in database");
-                var qnalist = output.questionAndAnswers;
-                this.setState({questionList: qnalist});
+                }
+                else {
+                    var qnalist = output.questionAndAnswers;
+                    this.setState({questionList: qnalist});
+                }
 
                 $(document).ready(
-                     function () {
+                    function () {
                         $('#dtMaterialDesignExample').DataTable();
                         $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
                             $(this).parent().append($(this).children());
@@ -82,7 +87,9 @@ class ViewAll extends Component {
                         $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
                     }
                 );
+
             });
+
     }
 
     handleEdit = (input) => {
@@ -145,6 +152,7 @@ class ViewAll extends Component {
                                 <th className="th-sm">Question</th>
                                 <th className="th-sm">Answer</th>
                                 <th className="th-sm">Category</th>
+                                <th className="th-sm">Applies To</th>
                                 <th className="th-sm">Edit</th>
                                 <th className="th-sm">Delete</th>
                             </tr>
@@ -158,6 +166,7 @@ class ViewAll extends Component {
                                             <td>{r.question}</td>
                                             <td>{r.answer}</td>
                                             <td>{r.category}</td>
+                                            <td>{r.applyTo}</td>
                                             <td><MDBBtn color="warning" className="glyphicon glyphicon-pencil" size="sm"
                                                         onClick={() => this.onOpenModal(r)}></MDBBtn></td>
                                             <td><MDBBtn color="danger" className="glyphicon glyphicon-trash" size="sm"
@@ -173,6 +182,7 @@ class ViewAll extends Component {
                                 <th className="th-sm">Question</th>
                                 <th className="th-sm">Answer</th>
                                 <th className="th-sm">Category</th>
+                                <th className="th-sm">Applies To</th>
                                 <th className="th-sm">Edit</th>
                                 <th className="th-sm">Delete</th>
                             </tr>

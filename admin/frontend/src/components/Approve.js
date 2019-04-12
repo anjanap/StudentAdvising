@@ -5,29 +5,30 @@ import * as API from "../api/API";
 
 class Approve extends Component {
     state={
-        adminsList: [
-            {id: 1, firstName: 'Anjana', lastName: 'Pradeep', email: 'a@a.com'},
-            {id:2, firstName: 'Ujjval', lastName: 'Soni', email: 'u@u.com'}]
+        adminsList: []
     };
 
-    handleApprove = (input) =>{
-        var payload= ({userid: input});
-        // API.deleteQuestionAndAnswer(payload)
-        //     .then((output) => {
-        //         if (output.status === 1) {
-        //             alert("User approved");
-        //         }
-        //     })
+    componentWillMount() {
+        API.getAllInactiveUsers()
+            .then((output) => {
+                if (output.status != 1)
+                    alert("No categories in database");
+                else {
+                    var u = output.inActiveUsers;
+                    this.setState({adminsList: u});
+                }
+            });
     }
 
-    handleDisapprove = (input) =>{
-        var payload= ({userid: input});
-        // API.deleteQuestionAndAnswer(payload)
-        //     .then((output) => {
-        //         if (output.status === 1) {
-        //             alert("User not approved");
-        //         }
-        //     })
+
+    handleApprove = (id,action) =>{
+        var payload= ({userId: id, userActionFromClient:action});
+        API.approveUser(payload)
+            .then((output) => {
+                if (output.status === 1) {
+                    alert("User approved");
+                }
+            })
     }
 
 
@@ -61,10 +62,10 @@ class Approve extends Component {
                                             <td className="table-content-admin">{u.email}</td>
                                             <td className="table-content-admin">
                                                 <button className="btn btn-success btn-sm btn-approve glyphicon glyphicon-ok"
-                                                        onClick={() => this.handleApprove(u.id)}>
+                                                        onClick={() => this.handleApprove(u.id, 1)}>
                                                 </button>
                                                 <button className="btn btn-danger btn-sm btn-approve glyphicon glyphicon-remove"
-                                                        onClick={() => this.handleDisapprove(u.id)} >
+                                                        onClick={() => this.handleApprove(u.id, -1)} >
                                                 </button>
 
                                             </td>
