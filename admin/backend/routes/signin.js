@@ -3,8 +3,8 @@ let usefulFunctions = require('./usefulFunctions');
 exports.signIn= function(req,res) {
     let emailAddress=req.body.emailAddress;
   	let password=req.body.password;
-    //console.log(emailAddress);
-    //console.log(password);
+    console.log(emailAddress);
+    console.log(password);
 
     let sqlSignIn= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name); select @result,@f_name, @l_name; ";
 
@@ -20,6 +20,8 @@ exports.signIn= function(req,res) {
             }
             else{
                 res.status(201).json({status: 1,"firstName": results[1][0]['@f_name'],"lastName": results[1][0]['@l_name'] });
+                req.session.emailAddress = req.body.emailAddress;
+                req.session.save();
             }
         }
     },sqlSignIn);

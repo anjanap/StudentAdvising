@@ -75,7 +75,7 @@ exports.deleteQuestionAndAnswer = function(req,res) {
 
 
 exports.getAllQuestionsAndAnswers = function(req,res) {
-
+    console.log(req.session.emailAddress);
     let sqlGetAllQuestionsAndAnswers = "call advising.prc_select_question_answer();";
 
     usefulFunctions.fetchData(function(err,results){
