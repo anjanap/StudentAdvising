@@ -7,10 +7,19 @@ function fetchData(callback,sqlQuery){
             console.log("ERROR: " + err.message);
         }
         else{
-            //console.log("DB Results:"+rows);
             callback(err, rows);
         }
     });
     con.end();
 }
 exports.fetchData=fetchData;
+
+
+function validateSessions(req, res, next){
+    if(req.session.emailAddress){
+        next();
+    }else{
+        res.status(501).json({status:'501',message:'Sessions Error! Please sign in again!!'});
+    }
+}
+exports.validateSessions=validateSessions;

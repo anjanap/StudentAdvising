@@ -19,13 +19,21 @@ exports.signIn= function(req,res) {
                 res.status(201).json({status: -1});
             }
             else{
-                res.status(201).json({status: 1,"firstName": results[1][0]['@f_name'],"lastName": results[1][0]['@l_name'] });
                 req.session.emailAddress = req.body.emailAddress;
                 req.session.save();
+                res.status(201).json({status: 1,"firstName": results[1][0]['@f_name'],"lastName": results[1][0]['@l_name'] });
             }
         }
     },sqlSignIn);
   };
+
+exports.signOut= function(req,res) {
+    if(req.session.destroy()){
+        res.status(201).json({status: 1});
+    }else{
+        res.status(500).json({status: -1});
+    }
+};
 
 
 

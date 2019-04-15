@@ -13,6 +13,7 @@ let questionAndAnswer = require('./routes/questionAndAnswer');
 let categories = require('./routes/categories');
 let appliesTo = require('./routes/appliesTo');
 let MySQLDB = require('./routes/mysqldb');
+let usefulFunctions = require('./routes/usefulFunctions');
 
 let corsOptions = {
     origin: 'http://localhost:3000',
@@ -24,13 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// let options = {
-//     host: 'studentadvising.ctahqekfkony.us-east-1.rds.amazonaws.com',
-//     port: 3306,
-//     user: 'sjsu',
-//     password: '11223344',
-//     database: 'SJSU_Advising'
-// };
 var connection = MySQLDB.getConnection();
 var sessionStore = new MySQLStore({}, connection);
 
@@ -43,20 +37,21 @@ app.use(expressSession({
     saveUninitialized: false}));
 
 app.use('/signIn', signIn.signIn);
+app.use('/signOut', signIn.signOut);
 app.use('/signUp',signUp.signUp);
-app.use('/approveUser',signUp.approveUser);
-app.use('/getAllInactiveUsers',signUp.getAllInactiveUsers);
-app.use('/setQuestionAndAnswer',questionAndAnswer.setQuestionAndAnswer);
-app.use('/editQuestionAndAnswer',questionAndAnswer.editQuestionAndAnswer);
-app.use('/deleteQuestionAndAnswer',questionAndAnswer.deleteQuestionAndAnswer);
-app.use('/getAllQuestionsAndAnswers',questionAndAnswer.getAllQuestionsAndAnswers);
-app.use('/getAnswer',questionAndAnswer.getAnswer);
-app.use('/getAllUnansweredQuestions',questionAndAnswer.getAllUnansweredQuestions);
-app.use('/deleteUnansweredQuestion',questionAndAnswer.deleteUnansweredQuestion);
-app.use('/getAllMatchingQuestions',questionAndAnswer.getAllMatchingQuestions);
-app.use('/getAllCategories',categories.getAllCategories);
-app.use('/setCategory',categories.setCategory);
-app.use('/getAllAppliesTo',appliesTo.getAllAppliesTo);
-app.use('/setAppliesTo',appliesTo.setAppliesTo);
+app.use('/approveUser',usefulFunctions.validateSessions,signUp.approveUser);
+app.use('/getAllInactiveUsers',usefulFunctions.validateSessions,signUp.getAllInactiveUsers);
+app.use('/setQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.setQuestionAndAnswer);
+app.use('/editQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.editQuestionAndAnswer);
+app.use('/deleteQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.deleteQuestionAndAnswer);
+app.use('/getAllQuestionsAndAnswers',usefulFunctions.validateSessions,questionAndAnswer.getAllQuestionsAndAnswers);
+app.use('/getAnswer',usefulFunctions.validateSessions,questionAndAnswer.getAnswer);
+app.use('/getAllUnansweredQuestions',usefulFunctions.validateSessions,questionAndAnswer.getAllUnansweredQuestions);
+app.use('/deleteUnansweredQuestion',usefulFunctions.validateSessions,questionAndAnswer.deleteUnansweredQuestion);
+app.use('/getAllMatchingQuestions',usefulFunctions.validateSessions,questionAndAnswer.getAllMatchingQuestions);
+app.use('/getAllCategories',usefulFunctions.validateSessions,categories.getAllCategories);
+app.use('/setCategory',usefulFunctions.validateSessions,categories.setCategory);
+app.use('/getAllAppliesTo',usefulFunctions.validateSessions,appliesTo.getAllAppliesTo);
+app.use('/setAppliesTo',usefulFunctions.validateSessions,appliesTo.setAppliesTo);
 
 module.exports = app;
