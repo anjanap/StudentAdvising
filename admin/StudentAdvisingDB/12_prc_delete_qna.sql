@@ -31,12 +31,14 @@ BEGIN
                             IF  EXISTS (SELECT * FROM Answers WHERE id = ans_id)
 								THEN
 									 
-                                     SELECT COUNT(*) AS cnt FROM Questions WHERE answer_id = ans_id;
+                                     SET cnt = (SELECT COUNT(*) FROM Questions WHERE answer_id = ans_id);
+                                     
+                                     DELETE FROM Questions WHERE id = ques_id;
+                                     
                                      IF cnt = 1 THEN
 											DELETE FROM Answers WHERE id = ans_id;
+                                            
                                     END IF;
-									
-									DELETE FROM Questions WHERE id = ques_id;
 									
 									SET RetMsg = 'Data Deleted successfully';
                                     
