@@ -37,6 +37,7 @@ app.use(expressSession({
     saveUninitialized: false}));
 
 app.use('/signIn', signIn.signIn);
+app.use('/checkCredentials',usefulFunctions.validateSessions, signIn.checkCredentials);
 app.use('/signOut', signIn.signOut);
 app.use('/signUp',signUp.signUp);
 app.use('/approveUser',usefulFunctions.validateSessions,signUp.approveUser);
