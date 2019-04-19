@@ -18,6 +18,7 @@ CREATE TABLE Login
   phone_number				VARCHAR(50)					NOT NULL,
   login_using_phone		BOOLEAN							NOT NULL,
   approval_comment		VARCHAR(50)					NULL,
+  is_super_admin 			BOOLEAN							NOT NULL,
   PRIMARY KEY (id),
   UNIQUE (email_address)
 );

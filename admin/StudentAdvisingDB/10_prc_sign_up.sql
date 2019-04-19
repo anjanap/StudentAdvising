@@ -41,7 +41,8 @@ BEGIN
                                                                is_active ,
                                                                country_code ,
                                                                phone_number ,
-                                                               login_using_phone)
+                                                               login_using_phone,
+                                                               is_super_admin)
 							VALUES
 																(First_Name,
                                                                  Last_Name, 
@@ -50,7 +51,8 @@ BEGIN
                                                                  false,
                                                                  Country_Code,
                                                                  Phone_Number,
-                                                                 Login_Using_Phone);
+                                                                 Login_Using_Phone,
+                                                                 0);
                          
                          SET RetMsg = 'User Successfully Added';
                          

@@ -5,7 +5,8 @@ DROP PROCEDURE IF EXISTS prc_user_update_signup;
 DELIMITER $$
 CREATE PROCEDURE prc_user_update_signup(
 				IN user_id 							INT,
-                IN user_action								VARCHAR(50),
+                IN user_action						VARCHAR(50),
+                IN make_super_admin		BOOLEAN,
                 OUT RetMsg						VARCHAR(50)
 )
 BEGIN
@@ -24,7 +25,7 @@ BEGIN
 						THEN
 							IF LOWER(user_action) = 'approve'
 								THEN
-										UPDATE Login SET is_active = true, approval_comment ='User approved by admin' where id = user_id;
+										UPDATE Login SET is_active = true, approval_comment ='User approved by admin', is_super_admin = make_super_admin  where id = user_id;
                                          SET RetMsg = 'User Active now';
 							ELSE
 									UPDATE Login SET is_active = false, approval_comment ='User not approved by admin' where id = user_id;

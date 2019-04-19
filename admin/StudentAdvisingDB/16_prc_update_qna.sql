@@ -50,7 +50,7 @@ BEGIN
                                 -- check that answer you are updating is not assigned to some other question
                                       IF NOT EXISTS(SELECT * FROM Answers WHERE answer_hash = ans_hash)
 										THEN  
-                                             SELECT COUNT(*) AS cnt FROM Questions WHERE answer_id = old_ans_id;
+                                             SET cnt = (SELECT COUNT(*) FROM Questions WHERE answer_id = old_ans_id);
 											 IF cnt = 1 
 											 THEN
 												
@@ -72,12 +72,12 @@ BEGIN
 													SET old_ans_id = LAST_INSERT_ID();
 												END IF;
 											ELSE
-														SELECT id as old_ans_id FROM Answers WHERE answer_hash = ans_hash;
+														SET old_ans_id = (SELECT id FROM Answers WHERE answer_hash = ans_hash);
 											END IF;
 											
                                     
-                                    SELECT id into cat_id FROM Categories where category_name = cat_name;
-									SELECT id into app_id from Applies_To where apply_to = app_to;
+                                    SET cat_id = (SELECT id FROM Categories where category_name = cat_name);
+									SET app_id = (SELECT id from Applies_To where apply_to = app_to);
 									
 									UPDATE Questions SET question = ques,
 																			question_hash = ques_hash,
