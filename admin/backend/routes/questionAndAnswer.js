@@ -102,7 +102,6 @@ exports.getAllQuestionsAndAnswers = function(req,res) {
                 res.status(201).json({status: 1,questionAndAnswers:questionAndAnswers});
             }
             else {
-                console.log("No Questions Found!");
                 res.status(201).json({status: -1});
             }
         }
@@ -138,7 +137,6 @@ exports.getAnswer = function(req,res) {
                 res.status(201).json({status: 1,questionAndAnswer:questionAndAnswer});
             }
             else {
-                console.log("No Questions Found!");
                 res.status(201).json({status: -1});
             }
         }
