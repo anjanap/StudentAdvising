@@ -19,6 +19,7 @@ exports.signIn= function(req,res) {
                 req.session.emailAddress = req.body.emailAddress;
                 req.session.firstName = results[1][0]['@f_name'];
                 req.session.lastName = results[1][0]['@l_name'];
+                req.session.isAdmin = results[1][0]['@admin'];
                 req.session.save();
 
                 res.status(201).json({status: 1,
@@ -35,7 +36,8 @@ exports.checkCredentials= function(req,res) {
     if(req.session.emailAddress){
         res.status(200).json({status: 1,
             "firstName": req.session.firstName,
-            "lastName": req.session.lastName });
+            "lastName": req.session.lastName,
+            "isAdmin": req.session.isAdmin});
     } else{
         res.status(501).json({status:'501',message:'Sessions Error! Please sign in again!!'})
     }
