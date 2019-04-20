@@ -4,6 +4,8 @@ exports.signIn= function(req,res) {
     let emailAddress=req.body.emailAddress;
   	let password=req.body.password;
 
+    password = password.replace("'", "\\'");
+
     let sqlSignIn= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name, @admin); select @result,@f_name, @l_name, @admin; ";
 
     usefulFunctions.fetchData(function(err,results){

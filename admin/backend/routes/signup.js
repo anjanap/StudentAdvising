@@ -10,6 +10,8 @@ exports.signUp= function(req,res) {
     let phoneNumber = req.body.phoneNumber;
     let isActive = 0;
 
+    password = password.replace("'", "\\'");
+
     //let loginUsingPhone = req.body.loginUsingPhone;
     let loginUsingPhone = 0; //for development only
 

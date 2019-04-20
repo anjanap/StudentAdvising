@@ -8,6 +8,8 @@ exports.setQuestionAndAnswer = function(req,res) {
 
     question = question.replace("'", "\\'");
     answer = answer.replace("'", "\\'");
+    category = category.replace("'", "\\'");
+    applyTo = applyTo.replace("'", "\\'");
 
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
@@ -35,6 +37,12 @@ exports.editQuestionAndAnswer = function(req,res) {
     let question=req.body.question;
     let category=req.body.category;
     let applyTo=req.body.applyTo;
+
+    question = question.replace("'", "\\'");
+    answer = answer.replace("'", "\\'");
+    category = category.replace("'", "\\'");
+    applyTo = applyTo.replace("'", "\\'");
+
     let sqlEditQuestionAndAnswer = "CALL advising.prc_update_qna("+questionId+","+answerId+",'"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){

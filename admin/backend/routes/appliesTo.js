@@ -30,6 +30,8 @@ exports.setAppliesTo= function(req,res) {
 
     let appliesTo=req.body.appliesTo;
 
+    appliesTo = appliesTo.replace("'", "\\'");
+
     let sqlSetAppliesTo = "call advising.prc_add_applies_to('"+appliesTo+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){

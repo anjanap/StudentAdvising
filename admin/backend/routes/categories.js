@@ -30,6 +30,8 @@ exports.setCategory= function(req,res) {
 
     let category=req.body.category;
 
+    category = category.replace("'", "\\'");
+
     let sqlSetCategory = "call advising.prc_add_category('"+category+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
