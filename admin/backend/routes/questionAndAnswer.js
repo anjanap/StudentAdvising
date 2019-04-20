@@ -6,6 +6,9 @@ exports.setQuestionAndAnswer = function(req,res) {
     let category=req.body.category;
     let applyTo=req.body.applyTo;
 
+    question = question.replace("'", "\\'");
+    answer = answer.replace("'", "\\'");
+
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
@@ -212,18 +215,26 @@ exports.getAllMatchingQuestions = function(req,res) {
             if(results.length > 0){
                 let questionAndAnswers = [];
                 results[0].forEach(function(element) {
+
+                    if(element.question === undefined && element.answer === undefined && element.category_name === undefined && element.apply_to === undefined){
+                        return;
+                    }
+
                     let jsonObj = {
                         question    :element.question,
                         answer      :element.answer,
                         category    :element.category_name,
                         appliesTo   :element.apply_to
                     };
+
                     questionAndAnswers.push(jsonObj);
                 });
-                res.status(201).json({status: 1,questionAndAnswers:questionAndAnswers});
-            }
-            else if(results[1][0]['@RetMsg'] === 'No match found'){
-                res.status(201).json({status: -1});
+
+                if(questionAndAnswers.length !== 0){
+                    res.status(201).json({status: 1,questionAndAnswers:questionAndAnswers});
+                } else {
+                    res.status(201).json({status: -1});
+                }
             }
         }
     },sqlGetAllMatchingQuestions);

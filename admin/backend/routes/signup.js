@@ -36,12 +36,15 @@ exports.approveUser = function(req,res) {
     let userId=req.body.userId;
     let userActionFromClient=req.body.userActionFromClient;
     let userAction="";
+    let makeSuperAdmin=req.body.makeSuperAdmin;
 
     if(userActionFromClient === 1){
         userAction = 'approve';
+    } else {
+        userAction = 'disapprove';
     }
 
-    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+",'"+userAction+"',@RetMsg); select @RetMsg;";
+    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+",'"+userAction+"','"+makeSuperAdmin+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
