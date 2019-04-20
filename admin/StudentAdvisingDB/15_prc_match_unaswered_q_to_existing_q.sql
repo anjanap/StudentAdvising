@@ -23,7 +23,7 @@ BEGIN
 								IF EXISTS (SELECT * FROM(
 								SELECT MATCH(question)  AGAINST (ques IN NATURAL LANGUAGE MODE) as score 
 													FROM Answers a INNER JOIN Questions q ON q.Answer_id = a.id) res
-													WHERE score >= 0.5 AND score < 2)
+													WHERE score >= 0.5)
 									THEN
 												SELECT * FROM(
 												SELECT question, answer, MATCH(question)  
@@ -35,15 +35,16 @@ BEGIN
 												INNER JOIN Applies_To ap
 												ON ap.id = q.apply_to_id
 												) res
-												WHERE score >= 0.5 AND score < 2
+												WHERE score >= 0.5
 												ORDER BY score DESC;
-									 SET RetMsg = 'match found';
+									  SET RetMsg = 'match found';
 											
 								ELSE
-									
+									SELECT 1;
 								   SET RetMsg = 'No match found';
 								END IF;
 						ELSE
+							 SELECT 1;
 							 SET RetMsg = 'Invalid unaswered question id';
 					END IF;
             COMMIT;

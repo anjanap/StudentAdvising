@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS Applies_To;
 DROP TABLE IF EXISTS Unanswered;
 DROP TABLE IF EXISTS Answers;
 DROP TABLE IF EXISTS Categories;
-
+DROP TABLE IF EXISTS Feedback;
 
 CREATE TABLE Categories
 (
@@ -55,6 +55,15 @@ CREATE TABLE Unanswered
 id										INT AUTO_INCREMENT   NOT NULL,
 question 							TEXT NOT NULL,
 question_hash					VARCHAR(255) NOT NULL,
+asked_on						DATETIME	NOT NULL,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE Feedback
+(
+id										INT AUTO_INCREMENT   NOT NULL,
+question_id 						INT NOT NULL,
+answer_id						INT NOT NULL,
 asked_on						DATETIME	NOT NULL,
 PRIMARY KEY(id)
 );
