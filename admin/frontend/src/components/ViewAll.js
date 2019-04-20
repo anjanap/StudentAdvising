@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import * as API from '../api/API';
 import {MDBTable, MDBBtn, MDBDataTable} from 'mdbreact';
 import Modal from 'react-responsive-modal';
@@ -8,7 +9,6 @@ import 'datatables.net';
 import 'datatables.net-dt';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-dt';
-// import './scripts.js';
 
 
 class ViewAll extends Component {
@@ -52,6 +52,7 @@ class ViewAll extends Component {
                 else {
                     var l = output.categoryNames;
                     this.setState({categoriesList: l});
+                    this.props.history.push("/ViewAll");
                 }
             });
     }
@@ -122,7 +123,7 @@ class ViewAll extends Component {
             .then((output) => {
                 if (output.status === 1) {
                     alert("Delete successful");
-                    //this.getAllquestions();
+                    this.getAllquestions();
                 }
             })
     }
@@ -284,4 +285,4 @@ class ViewAll extends Component {
     }
 }
 
-export default ViewAll;
+export default withRouter(ViewAll);

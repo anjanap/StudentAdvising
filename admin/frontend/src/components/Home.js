@@ -16,7 +16,9 @@ class Home extends Component {
         lastname: '',
         phone: '',
         countrycode: '+1',
-        validateuser: 'Dan Harkey',
+        validateuser: '',
+        isadmin: -1,
+        islogged: false,
         message: '',
         formValid: false,
         displayErrors: {email: '', password: ''},
@@ -32,6 +34,23 @@ class Home extends Component {
         phoneValid2: false
     };
 
+
+
+    componentWillMount() {
+        API.checkCredentials()
+            .then((output) => {
+                if(output.status === 1){
+                    //this.setState({islogged: true, validateuser: output.firstName});
+                    console.log("sessions check: "+output.firstName);
+                    this.logged(output.firstName+' '+output.lastName, output.isAdmin);
+                    this.props.history.push("/home");
+                }
+                else {
+                    console.log('logout called error');
+                }
+            });
+    }
+
   handleLogin = (input) =>{
       var u=input.username;
       var p=input.password;
@@ -44,20 +63,38 @@ class Home extends Component {
               ReactDOM.findDOMNode(this.refs.user).value = "";
               ReactDOM.findDOMNode(this.refs.pwd).value = "";
               this.props.history.push("/");
-              this.setState({validateuser: (output.firstName+' '+output.lastName)});
+              console.log("admin : "+output.isAdmin);
+              this.setState({validateuser: (output.firstName+' '+output.lastName), isadmin: output.isAdmin,islogged: true});
 
               } else {
                 ReactDOM.findDOMNode(this.refs.user).value = "";
                 ReactDOM.findDOMNode(this.refs.pwd).value = "";
-                this.setState({islogged: 'false', message:'',formValid:false});
+                this.setState({islogged: false, message:'',formValid:false});
                 alert("Invalid credentials. Login again.");
               }
     })
   }
 
   handleLogout = () => {
-    this.setState({username: '', validateuser: ''});
-    this.props.history.push("/home");
+      API.signOut()
+          .then((status) => {
+              if(status === 201){
+                  this.setState({islogged: false, validateuser: ''});
+                  this.props.history.push("/home");
+              }
+              else {
+                  console.log('logout called error');
+              }
+          });
+
+  }
+
+  logged = (name,admin) => {
+      this.setState({islogged:true,validateuser:name, isadmin:admin});
+  };
+
+  isNotlogged=()=>{
+        this.setState({islogged:false,validateuser:''});
   }
 
   handleRegister = (input) =>{
@@ -158,7 +195,7 @@ class Home extends Component {
               <div className="w3-container">
               <div className="col-sm-12 col-md-12 col-lg-12"><br/></div>
               <div className="row">
-                <NavigationBar user={this.state.validateuser} logout={()=>this.handleLogout()}/>
+                <NavigationBar user={this.state.validateuser} isadmin={this.state.isadmin} logout={()=>this.handleLogout()} handleLogged={this.logged} handleNotLogged={this.isNotlogged}/>
               </div>
             </div>) :
               (<div className="">
