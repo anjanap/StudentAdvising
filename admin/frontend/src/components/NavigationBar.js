@@ -5,6 +5,7 @@ import Unanswered from "./Unanswered";
 import NewQuestion from "./NewQuestion";
 import Approve from "./Approve";
 import '../css/style.css';
+import * as API from "../api/API";
 
 class NavigationBar extends Component {
 // handleLogout = () => {
@@ -49,7 +50,7 @@ class NavigationBar extends Component {
                     <Route exact path="/ViewAll" render={() => (<ViewAll user={this.props.user}/>)}/>
                     <Route exact path="/NewQuestion" render={() => (<NewQuestion user={this.props.user}/>)}/>
                     <Route exact path="/Unanswered" render={() => (<Unanswered user={this.props.user}/>)}/>
-                    <Route exact path="/Approve" render={() => (<Approve user={this.props.user}/>)}/>
+                    <Route exact path="/Approve" render={() => (<Approve user={this.props.user} isadmin={this.props.isadmin}/>)}/>
                 </div>
             </div>
         );

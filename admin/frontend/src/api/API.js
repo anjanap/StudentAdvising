@@ -43,6 +43,59 @@ export const signin = (payload) =>
             return error;
         });
 
+//logout
+export const signOut = () =>
+    fetch(`${api}/signOut`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include'
+    }).then(res => {
+        return res.status;
+    }).catch(error => {
+        console.log("This is error");
+        return error;
+    });
+
+
+//signIn
+export const checkCredentials = () =>
+    fetch(`${api}/checkCredentials`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is login error");
+            return error;
+        });
+
+
+export const validateLogin = (payload) =>
+    fetch(`${api}/validateLogin`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(res=>res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is update error");
+            return error;
+        });
 
 //get all questions
 export const getAllQuestions = (payload) =>
@@ -74,6 +127,25 @@ export const getAllCategories = (payload) =>
         },
         credentials: 'include',
         body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is getAllCategories error");
+            return error;
+        });
+
+
+//get all categories
+export const getAllAppliesTo = () =>
+    fetch(`${api}/getAllAppliesTo`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
     }).then(res => res.json())
         .then(res => {
             return res;
@@ -163,6 +235,26 @@ export const setCategory = (payload) =>
         });
 
 
+//add new user group
+export const setAppliesTo = (payload) =>
+    fetch(`${api}/setAppliesTo`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is setCategory error");
+            return error;
+        });
+
+
 // //get all unanswered
 export const getAllUnansweredQuestions = (payload) =>
     fetch(`${api}/getAllUnansweredQuestions`, {
@@ -178,7 +270,7 @@ export const getAllUnansweredQuestions = (payload) =>
             return res;
         })
         .catch(error => {
-            console.log("This is getAllCategories error");
+            console.log("This is getAllUnansweredQuestions error");
             return error;
         });
 

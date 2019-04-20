@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import * as API from '../api/API';
 import Modal from 'react-responsive-modal';
 import $ from 'jquery';
@@ -7,7 +8,6 @@ import 'datatables.net-dt';
 import 'datatables.net-buttons';
 import 'datatables.net-buttons-dt';
 import {MDBBtn} from "mdbreact";
-import ReactDOM from "react-dom";
 import '../css/style.css';
 import Suggestions from "./Suggestions";
 
@@ -16,7 +16,8 @@ class Unanswered extends Component {
     state = {
         unansweredList: [],
         categoriesList: [],
-        appliestoList: ['Current Student', 'Prospective Student', 'Both'],
+        questiontitle:'',
+        appliestoList: [],
         question: '',
         answer: '',
         category: '',
@@ -35,6 +36,7 @@ class Unanswered extends Component {
     componentWillMount() {
         this.getUnansweredquestions();
         this.getAllCategories();
+        this.getUserGroups();
     }
 
     getUnansweredquestions() {
@@ -46,10 +48,11 @@ class Unanswered extends Component {
                 else {
                     var qlist = output.unansweredQuestions;
                     this.setState({unansweredList: qlist});
-                }
 
+                }
+                this.props.history.push("/Unanswered");
                 $(document).ready(
-                    function () {
+                    setTimeout(function () {
                         $('#dtMaterialDesignExample').DataTable();
                         $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
                             $(this).parent().append($(this).children());
@@ -63,9 +66,11 @@ class Unanswered extends Component {
                         $('#dtMaterialDesignExample_wrapper select').removeClass(
                             'custom-select custom-select-sm form-control form-control-sm');
                         $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
-                    }
+
+                    },5000)
                 );
             });
+
     }
 
     getAllCategories() {
@@ -76,6 +81,18 @@ class Unanswered extends Component {
                 else {
                     var l = output.categoryNames;
                     this.setState({categoriesList: l});
+                }
+            });
+    }
+
+    getUserGroups() {
+        API.getAllAppliesTo()
+            .then((output) => {
+                if (output.status != 1)
+                    alert("No categories in database");
+                else {
+                    var l = output.appliesTo;
+                    this.setState({appliestoList: l});
                 }
             });
     }
@@ -101,24 +118,52 @@ class Unanswered extends Component {
                                 alert("Successful added");
                             }
                         });
-
-
                 } else if (output === -1) {
                     alert("Question already exist");
                 }
             })
     }
 
+
+    handleLinkQuestion = (question,input) => {
+        var payload = ({
+            question: question,
+            answer: input.answer,
+            category: input.category,
+            applyTo: input.appliesTo
+        });
+        console.log(payload);
+        this.changeDisplay();
+        // API.setQuestionAndAnswer(payload)
+        //     .then((output) => {
+        //         console.log("check: " + output);
+        //         if (output.status === 1) {
+        //             this.setState({open: false});
+        //             var payloadDelete = ({questionId: this.state.unansweredQuestionId});
+        //             API.deleteUnansweredQuestion(payloadDelete)
+        //                 .then((output) => {
+        //                     if (output.status == 1) {
+        //                         this.getUnansweredquestions();
+        //                         alert("Successful added");
+        //                     }
+        //                 });
+        //
+        //
+        //         } else if (output === -1) {
+        //             alert("Question already exist");
+        //         }
+        //     })
+    }
+
     getSuggestions = (input) => {
         this.setState({questionDetails: [], display: false});
-        var payload = ({questionId: input});
+        var payload = ({questionId: input.id});
         API.getAllMatchingQuestions(payload)
             .then((output) => {
                 if (output.status != 1)
                     alert("No matching questions in database");
                 else {
-
-                    this.setState({questionDetails: output.questionAndAnswers, display: false});
+                    this.setState({questionDetails: output.questionAndAnswers, display: false, questiontitle: input.question});
                 }
             });
     }
@@ -195,6 +240,7 @@ class Unanswered extends Component {
                                            className="table table-striped table-bordered table-sm stripe1"
                                            cellSpacing="0"
                                            width="100%">
+
                                         <thead>
                                         <tr>
                                             <th className="th-sm">Question</th>
@@ -202,6 +248,7 @@ class Unanswered extends Component {
                                             <th className="th-sm">Suggestions</th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         {
 
@@ -213,7 +260,7 @@ class Unanswered extends Component {
                                                                     size="sm"
                                                                     onClick={() => this.onOpenModal(r)}></MDBBtn></td>
                                                         <td style={{width: '20%'}}><MDBBtn color="info" size="sm"
-                                                                    onClick={() => this.getSuggestions(r.id)}> View</MDBBtn>
+                                                                    onClick={() => this.getSuggestions(r)}> View</MDBBtn>
                                                         </td>
                                                     </tr>
                                                 )
@@ -227,6 +274,7 @@ class Unanswered extends Component {
                                             <th className="th-sm">Suggestions</th>
                                         </tr>
                                         </tfoot>
+
                                     </table>
                                 </div>
                             </div>
@@ -334,13 +382,12 @@ class Unanswered extends Component {
                             </Modal>
                         </div>
                     ) : (<Suggestions questionDetails={this.state.questionDetails}
-                                      changeDisplay={() => this.changeDisplay()}/>)
+                                      changeDisplay={() => this.changeDisplay()}
+                                      linkQuestion={this.handleLinkQuestion} questiontitle={this.state.questiontitle}/>)
                 }
-
-
             </div>
         );
     }
 }
 
-export default Unanswered;
+export default withRouter(Unanswered);
