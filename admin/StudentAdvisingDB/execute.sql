@@ -38,3 +38,8 @@ source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/19_prc_add_
 
 source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/20_prc_get_applies_to.sql
 
+
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/21_prc_get_all_active_users.sql
+
+source /Users/anjana/Desktop/StudentAdvising/admin/StudentAdvisingDB/22_prc_get_feedback.sql
+
