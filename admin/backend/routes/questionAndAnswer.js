@@ -40,7 +40,7 @@ exports.editQuestionAndAnswer = function(req,res) {
         }
         else
         {
-            if(results[2][0]['@RetMsg'] === 'Data updated successfully'){
+            if(results[1][0]['@RetMsg'] === 'Data updated successfully'){
                 res.status(201).json({status: 1});
             }
             else if(results[1][0]['@RetMsg'] === 'Invalid answer id sent' || results[1][0]['@RetMsg'] === 'Invalid question id sent.'){
@@ -55,7 +55,7 @@ exports.deleteQuestionAndAnswer = function(req,res) {
     let questionId=req.body.questionId;
     let answerId=req.body.answerId;
 
-    let sqlDeleteQuestionAndAnswer= "CALL advising.prc_delete_qna("+answerId+","+questionId+",@RetMsg); select @RetMsg; ";
+    let sqlDeleteQuestionAndAnswer= "CALL advising.prc_delete_qna("+questionId+","+answerId+",@RetMsg); select @RetMsg; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -63,7 +63,7 @@ exports.deleteQuestionAndAnswer = function(req,res) {
         }
         else
         {
-            if(results[2][0]['@RetMsg'] === 'Data Deleted successfully'){
+            if(results[1][0]['@RetMsg'] === 'Data Deleted successfully'){
                 res.status(201).json({status: 1});
             }
             else if(results[1][0]['@RetMsg'] === 'Invalid answer id sent' || results[1][0]['@RetMsg'] === 'Invalid question id sent.'){

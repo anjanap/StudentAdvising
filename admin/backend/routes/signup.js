@@ -41,7 +41,7 @@ exports.approveUser = function(req,res) {
         userAction = 'approve';
     }
 
-    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+","+userAction+",@RetMsg); select @RetMsg;";
+    let sqlApproveUser = "call advising_admin.prc_user_update_signup("+userId+",'"+userAction+"',@RetMsg); select @RetMsg;";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){

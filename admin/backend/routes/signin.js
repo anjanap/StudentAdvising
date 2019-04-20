@@ -4,7 +4,7 @@ exports.signIn= function(req,res) {
     let emailAddress=req.body.emailAddress;
   	let password=req.body.password;
 
-    let sqlSignIn= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name); select @result,@f_name, @l_name; ";
+    let sqlSignIn= "CALL advising_admin.prc_user_signin('"+emailAddress+"','"+password+"',false,null, @result,@f_name, @l_name, @admin); select @result,@f_name, @l_name, @admin; ";
 
     usefulFunctions.fetchData(function(err,results){
         if(err){
@@ -12,7 +12,6 @@ exports.signIn= function(req,res) {
         }
         else
         {
-            console.log(results[1][0]['@result']);
             if(results[1][0]['@result'] === 'Incorrect UserName Password'){
                 res.status(201).json({status: -1});
             }
@@ -25,7 +24,8 @@ exports.signIn= function(req,res) {
                 res.status(201).json({status: 1,
                     "firstName": results[1][0]['@f_name'],
                     "lastName": results[1][0]['@l_name'],
-                    "emailAddress": req.body.emailAddress});
+                    "emailAddress": req.body.emailAddress,
+                    "isAdmin": results[1][0]['@admin']});
             }
         }
     },sqlSignIn);
