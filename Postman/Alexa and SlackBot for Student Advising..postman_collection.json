@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"question\": \"what are Dr DANS office hours?\",\n    \"answer\": \"mon to fri 10 to 12\",\n    \"category\": \"Academic Policy\",\n    \"applyTo\": \"Prospective Student\",\n    \"questionId\": 2,\n    \"answerId\": 2\n}"
+					"raw": "{\n    \"question\": \"what are Dr DANS office hours?\",\n    \"answer\": \"mon to fri 10 to 12\",\n    \"category\": \"Academic Policy\",\n    \"applyTo\": \"Prospective Student\",\n    \"questionId\": 11,\n    \"answerId\": 12\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3004/editQuestionAndAnswer",
@@ -48,7 +48,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstName\":\"Ujjvql\",\n\t\"lastName\":\"Soni\",\n\t\"emailAddress\":\"u@u.com\",\n\t\"password\":\"111\",\n\t\"countryCode\" : \"+1\",\n\t\"phoneNumber\" : \"8722357460\",\n\t\"isActive\" : \"1\",\n\t\"loginUsingPhone\" : \"1\"\n}"
+					"raw": "{\n\t\"firstName\":\"Ujjvql\",\n\t\"lastName\":\"Soni\",\n\t\"emailAddress\":\"a@a.com\",\n\t\"password\":\"111\",\n\t\"countryCode\" : \"+1\",\n\t\"phoneNumber\" : \"88888888\",\n\t\"isActive\" : \"1\",\n\t\"loginUsingPhone\" : \"0\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/signUp",
@@ -106,7 +106,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"question\" : \"q2\",\n\t\"answer\": \"a2\",\n\t\"category\" : \"General Advising\",\n\t\"applyTo\" : \"Prospective Student\"\n}"
+					"raw": "{\n\t\"question\" : \"Sample Question's 1\",\n\t\"answer\": \"Sample Answer 1\",\n\t\"category\" : \"General Advising\",\n\t\"applyTo\" : \"Prospective Student\"\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3004/setQuestionAndAnswer",
@@ -193,7 +193,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userId\" : 2,\n\t\"userActionFromClient\" : 1\n}"
+					"raw": "{\n\t\"userId\" : 3,\n\t\"userActionFromClient\" : 1,\n\t\"makeSuperAdmin\": true\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/approveUser",
@@ -222,7 +222,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n            \"questionId\": 3,\n            \"answerId\": 3\n}"
+					"raw": "{\n            \"questionId\": 16,\n            \"answerId\": 19\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/deleteQuestionAndAnswer",
@@ -268,9 +268,19 @@
 		},
 		{
 			"name": "getAllQuestionsAndAnswers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
@@ -283,6 +293,102 @@
 					"port": "3004",
 					"path": [
 						"getAllQuestionsAndAnswers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkCredentials",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/checkCredentials",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"checkCredentials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signOut",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3004/signOut",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"signOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAnswer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\" : \"what is the last day to drop any class?\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3004/getAnswer",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getAnswer"
 					]
 				}
 			},

@@ -55,8 +55,8 @@ exports.approveUser = function(req,res) {
             if(results[1][0]['@RetMsg'] === 'User Active now'){
                 res.status(201).json({status: 1});
             }
-            else if(results[1][0]['@RetMsg'] === "User is still inactive as it was not approved by admin"){
-                res.status(201).json({status: -1});
+            else if(results[1][0]['@RetMsg'] === "User is still inactive as it was not approved by a"){
+                res.status(201).json({status: 1});
             }
             else if(results[1][0]['@RetMsg'] === "User does not exist"){
                 res.status(201).json({status: 0});
