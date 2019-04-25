@@ -8,11 +8,11 @@ import yaml
 import ast
 import requests
                             
-token = 'xoxb-472876490577-561229766256-ar0kMEpW2vANgIWvNN0Q0AL6'
+token = ''
 print(token)
 slack_client = SlackClient(token)
 starterbot_id = None
-url = "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/4fe4b82e-e9dc-4b94-b5ea-07a4205524d8/message?version=2019-02-28"
+url = ""
 headers = {"Content-Type":"application/json","Authorization":"Basic YXBpa2V5OlhWa3NqQTJtdFlpRm1BTXYtRUFhejVCNEhwcDVhekk0Y01aY2N2VFlfZjVw","Accept": "application/json"}
 
 # constants
@@ -22,7 +22,7 @@ RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
 def getAnswer(user_question):
 
     conn = mysql.connector.connect(user='sjsu', password='11223344',
-                              host='studentadvising.ctahqekfkony.us-east-1.rds.amazonaws.com',port='3306',
+                              host='',port='3306',
                               database='SJSU_Advising')
     cursor = conn.cursor()
     query = "call advising.prc_get_answer(\"%s\");" % user_question
