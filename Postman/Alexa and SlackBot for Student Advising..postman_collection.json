@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"question\": \"what are Dr DANS office hours?\",\n    \"answer\": \"mon to fri 10 to 12\",\n    \"category\": \"Academic Policy\",\n    \"applyTo\": \"Prospective Student\",\n    \"questionId\": 11,\n    \"answerId\": 12\n}\n"
+					"raw": "{\n    \"question\": \"what are Dr yoo office hours?\",\n    \"answer\": \"mon to fri 10 to 12\",\n    \"category\": \"Academic Policy\",\n    \"applyTo\": \"Prospective Student\",\n    \"questionId\": 11,\n    \"answerId\": 12\n}\n"
 				},
 				"url": {
 					"raw": "localhost:3004/editQuestionAndAnswer",
@@ -77,7 +77,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"emailAddress\":\"u@u.com\",\n\t\"password\":\"111\"\n}"
+					"raw": "{\n\t\"emailAddress\":\"admin@admin.com\",\n\t\"password\":\"admin\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/signIn",
@@ -193,7 +193,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userId\" : 3,\n\t\"userActionFromClient\" : 1,\n\t\"makeSuperAdmin\": true\n}"
+					"raw": "{\n\t\"userId\" : 5,\n\t\"userActionFromClient\" : -1,\n\t\"makeSuperAdmin\": false\n}"
 				},
 				"url": {
 					"raw": "localhost:3004/approveUser",
@@ -286,13 +286,47 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3004/getAllQuestionsAndAnswers",
+					"raw": "http://localhost:3004/getAllQuestionsAndAnswers",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3004",
 					"path": [
 						"getAllQuestionsAndAnswers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFeedback",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3004/getFeedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3004",
+					"path": [
+						"getFeedback"
 					]
 				}
 			},
