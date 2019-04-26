@@ -8,7 +8,6 @@ exports.signUp= function(req,res) {
     let password = req.body.password;
     let countryCode = req.body.countryCode;
     let phoneNumber = req.body.phoneNumber;
-    let isActive = 0;
 
     password = password.replace("'", "\\'");
 

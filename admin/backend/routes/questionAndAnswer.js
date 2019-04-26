@@ -6,10 +6,10 @@ exports.setQuestionAndAnswer = function(req,res) {
     let category=req.body.category;
     let applyTo=req.body.applyTo;
 
-    question = question.replace("'", "\\'");
-    answer = answer.replace("'", "\\'");
-    category = category.replace("'", "\\'");
-    applyTo = applyTo.replace("'", "\\'");
+    question = question.replace(new RegExp("'", 'g'), "\\'");
+    answer = answer.replace(new RegExp("'", 'g'), "\\'");
+    category = category.replace(new RegExp("'", 'g'), "\\'");
+    applyTo = applyTo.replace(new RegExp("'", 'g'), "\\'");
 
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
@@ -131,7 +131,7 @@ exports.getAnswer = function(req,res) {
         }
         else
         {
-            if(results.length > 0){
+            if(results.length > 0 && results[0][0].result !== "Question doesn't exist"){
                 let questionAndAnswer = [];
                 let jsonObj = {
                     question    : JSON.parse(results[0][0].result)[0].question,
@@ -164,7 +164,6 @@ exports.getAllUnansweredQuestions = function(req,res) {
         }
         else
         {
-
             if(results.length > 0){
                 let unansweredQuestions = [];
                 results[0].forEach(function(element) {
