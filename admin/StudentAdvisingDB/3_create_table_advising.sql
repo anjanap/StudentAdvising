@@ -62,13 +62,13 @@ PRIMARY KEY(id)
 CREATE TABLE Feedback
 (
 id										INT AUTO_INCREMENT   NOT NULL,
-question_id 						INT NOT NULL,
-answer_id						INT NOT NULL,
+question 							TEXT NOT NULL,
+answer							TEXT NOT NULL,
 asked_on						DATETIME	NOT NULL,
 PRIMARY KEY(id)
 );
 
 
-ALTER TABLE advising.Questions ADD FULLTEXT(question);
+
 
 

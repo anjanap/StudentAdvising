@@ -7,7 +7,7 @@ CREATE PROCEDURE prc_user_update_signup(
 				IN user_id 							INT,
                 IN user_action						VARCHAR(50),
                 IN make_super_admin		BOOLEAN,
-                OUT RetMsg						VARCHAR(50)
+                OUT RetMsg						VARCHAR(100)
 )
 BEGIN
              -- Exception Handing 

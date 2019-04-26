@@ -14,7 +14,7 @@ BEGIN
 			END;
 			
             
-            Select * from Login WHERE is_active = 0;
+            Select * from Login WHERE is_active = 0 and approval_comment is null;
             
 END$$
 DELIMITER ;

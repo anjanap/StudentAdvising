@@ -26,29 +26,35 @@ BEGIN
 			  DECLARE EXIT HANDLER FOR SQLEXCEPTION SELECT 'SQLException encountered';
 			 
 			 SET curr_time = now();
-             IF NOT login_using_phone is true 
-				THEN
-						IF NOT Exists(
-								SELECT id FROM	Login	WHERE	email_address = email_addr AND Password = MD5(Pswd)) 
-						THEN
-							SET User_ID ='Incorrect UserName Password';
-			
-						ELSE
-							-- SET msg = 'Successful Login';
-							SELECT id, first_name, last_name, is_super_admin INTO User_ID,fst_name, lst_name, super_admin FROM Login WHERE email_address = email_addr AND Password = MD5(Pswd);
-                        END If;
+             
+               IF NOT EXISTS(SELECT id FROM	Login WHERE	email_address = email_addr and is_active = 1)
+					THEN
+							SET User_ID = 'User is Inactive';
+               ELSEIF NOT login_using_phone is true 
+					THEN
+							IF NOT Exists(
+									SELECT id FROM	Login WHERE	email_address = email_addr AND Password = MD5(Pswd)) 
+							THEN
+								SET User_ID ='Incorrect UserName Password';
+				
+							ELSE
+								-- SET msg = 'Successful Login';
+									SELECT id, first_name, last_name, is_super_admin INTO User_ID,fst_name, lst_name, super_admin FROM Login 
+									WHERE email_address = email_addr AND Password = MD5(Pswd) AND is_active = 1;
+						END If;
 			ELSE
 						IF NOT Exists(
 								SELECT id FROM Login l join OTP o on l.id = o.login_id   WHERE l.email_address = email_addr AND o.OTP = temp_pswd 
-                                 AND o.valid_from <= curr_time and o.valid_till >= curr_time) 
+                                 AND o.valid_from <= curr_time and o.valid_till >= curr_time)  
 						THEN
 							SET User_ID ='Incorrect UserName Password';
 			
 						ELSE
 							-- SET msg = 'Successful Login';
-							SELECT l.id, first_name, last_name,is_super_admin INTO User_ID,fst_name, lst_name, super_admin FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd
+							SELECT l.id, first_name, last_name,is_super_admin INTO User_ID,fst_name, lst_name, super_admin 
+                            FROM Login l join OTP o on l.id = o.login_id   WHERE email_address = email_addr AND o.OTP = temp_pswd AND is_active = 1
 							AND o.valid_from <= curr_time and o.valid_till >= curr_time limit 1;
-						END If;
+					END if;
 		  END IF;
 END $$
 
