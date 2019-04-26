@@ -82,11 +82,11 @@ class Approve extends Component {
                                                     <td className="table-content-admin">{u.email}</td>
                                                     <td className="table-content-admin">
                                                         <button className="btn btn-success btn-sm btn-approve"
-                                                                onClick={() => this.handleApprove(u.id, 1, false)} >Admin</button>
+                                                                onClick={() => this.handleApprove(u.id, 1, 0)} >Admin</button>
                                                         <button className="btn btn-success btn-sm btn-approve" style={{backgroundColor:'#7F27E3'}}
-                                                                onClick={() => this.handleApprove(u.id, 1, true)}>Super Admin</button>
+                                                                onClick={() => this.handleApprove(u.id, 1, 1)}>Super Admin</button>
                                                         <button className="btn btn-danger btn-sm btn-approve glyphicon glyphicon-remove"
-                                                                onClick={() => this.handleApprove(u.id, -1, false)} >
+                                                                onClick={() => this.handleApprove(u.id, -1, 0)} >
                                                         </button>
 
                                                     </td>

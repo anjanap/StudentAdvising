@@ -6,10 +6,10 @@ exports.setQuestionAndAnswer = function(req,res) {
     let category=req.body.category;
     let applyTo=req.body.applyTo;
 
-    question = question.replace("'", "\\'");
-    answer = answer.replace("'", "\\'");
-    category = category.replace("'", "\\'");
-    applyTo = applyTo.replace("'", "\\'");
+    question = question.replace(new RegExp("'", 'g'), "\\'");
+    answer = answer.replace(new RegExp("'", 'g'), "\\'");
+    category = category.replace(new RegExp("'", 'g'), "\\'");
+    applyTo = applyTo.replace(new RegExp("'", 'g'), "\\'");
 
     let sqlSetQuestionAndAnswer= "CALL advising.prc_add_qna('"+answer+"','"+question+"','"+category+"','"+applyTo+"',@RetMsg); select @RetMsg; ";
 
@@ -131,7 +131,7 @@ exports.getAnswer = function(req,res) {
         }
         else
         {
-            if(results.length > 0){
+            if(results.length > 0 && results[0][0].result !== "Question doesn't exist"){
                 let questionAndAnswer = [];
                 let jsonObj = {
                     question    : JSON.parse(results[0][0].result)[0].question,
@@ -164,7 +164,6 @@ exports.getAllUnansweredQuestions = function(req,res) {
         }
         else
         {
-
             if(results.length > 0){
                 let unansweredQuestions = [];
                 results[0].forEach(function(element) {
@@ -246,4 +245,37 @@ exports.getAllMatchingQuestions = function(req,res) {
             }
         }
     },sqlGetAllMatchingQuestions);
+};
+
+exports.getFeedback = function(req,res) {
+
+    let sqlGetFeedback = "call advising.prc_get_feedback();";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                let feedBackQuestions = [];
+                results[0].forEach(function(element) {
+                    let jsonObj = {
+                        question    : element.question,
+                        answer      : element.answer,
+                        asked_on    : element.asked_on,
+                        id          : element.id
+                    };
+                    feedBackQuestions.push(jsonObj);
+                });
+
+                res.status(201).json({status: 1,feedBackQuestions:feedBackQuestions});
+            }
+            else {
+                console.log("No Questions Found!");
+                res.status(201).json({status: -1});
+            }
+        }
+
+    },sqlGetFeedback);
 };

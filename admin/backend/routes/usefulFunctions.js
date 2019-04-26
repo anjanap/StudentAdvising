@@ -23,3 +23,12 @@ function validateSessions(req, res, next){
     }
 }
 exports.validateSessions=validateSessions;
+
+function validateSessionForAdmin(req, res, next){
+    if(req.session.isAdmin){
+        next();
+    }else{
+        res.status(501).json({status:'501',message:'Admin Sessions Error! Please sign in as an admin and Try again!!'});
+    }
+}
+exports.validateSessionForAdmin=validateSessionForAdmin;

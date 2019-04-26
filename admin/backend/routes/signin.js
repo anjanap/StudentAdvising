@@ -14,8 +14,9 @@ exports.signIn= function(req,res) {
         }
         else
         {
-            if(results[1][0]['@result'] === 'Incorrect UserName Password'){
-                res.status(201).json({status: -1});
+            if(results[1][0]['@result'] === 'Incorrect UserName Password' || results[1][0]['@result'] === 'User is Inactive'){
+                req.session.destroy();
+                res.status(201).json({status: -1 , message: results[1][0]['@result']});
             }
             else{
                 req.session.emailAddress = req.body.emailAddress;

@@ -40,8 +40,8 @@ app.use('/signIn', signIn.signIn);
 app.use('/checkCredentials',usefulFunctions.validateSessions, signIn.checkCredentials);
 app.use('/signOut', signIn.signOut);
 app.use('/signUp',signUp.signUp);
-app.use('/approveUser',usefulFunctions.validateSessions,signUp.approveUser);
-app.use('/getAllInactiveUsers',usefulFunctions.validateSessions,signUp.getAllInactiveUsers);
+app.use('/approveUser',usefulFunctions.validateSessionForAdmin,signUp.approveUser);
+app.use('/getAllInactiveUsers',usefulFunctions.validateSessionForAdmin,signUp.getAllInactiveUsers);
 app.use('/setQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.setQuestionAndAnswer);
 app.use('/editQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.editQuestionAndAnswer);
 app.use('/deleteQuestionAndAnswer',usefulFunctions.validateSessions,questionAndAnswer.deleteQuestionAndAnswer);
@@ -50,6 +50,7 @@ app.use('/getAnswer',usefulFunctions.validateSessions,questionAndAnswer.getAnswe
 app.use('/getAllUnansweredQuestions',usefulFunctions.validateSessions,questionAndAnswer.getAllUnansweredQuestions);
 app.use('/deleteUnansweredQuestion',usefulFunctions.validateSessions,questionAndAnswer.deleteUnansweredQuestion);
 app.use('/getAllMatchingQuestions',usefulFunctions.validateSessions,questionAndAnswer.getAllMatchingQuestions);
+app.use('/getFeedback',usefulFunctions.validateSessions,questionAndAnswer.getFeedback);
 app.use('/getAllCategories',usefulFunctions.validateSessions,categories.getAllCategories);
 app.use('/setCategory',usefulFunctions.validateSessions,categories.setCategory);
 app.use('/getAllAppliesTo',usefulFunctions.validateSessions,appliesTo.getAllAppliesTo);
