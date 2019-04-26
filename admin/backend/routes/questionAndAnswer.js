@@ -247,3 +247,36 @@ exports.getAllMatchingQuestions = function(req,res) {
         }
     },sqlGetAllMatchingQuestions);
 };
+
+exports.getFeedback = function(req,res) {
+
+    let sqlGetFeedback = "call advising.prc_get_feedback();";
+
+    usefulFunctions.fetchData(function(err,results){
+        if(err){
+            throw err;
+        }
+        else
+        {
+            if(results.length > 0){
+                let feedBackQuestions = [];
+                results[0].forEach(function(element) {
+                    let jsonObj = {
+                        question    : element.question,
+                        answer      : element.answer,
+                        asked_on    : element.asked_on,
+                        id          : element.id
+                    };
+                    feedBackQuestions.push(jsonObj);
+                });
+
+                res.status(201).json({status: 1,feedBackQuestions:feedBackQuestions});
+            }
+            else {
+                console.log("No Questions Found!");
+                res.status(201).json({status: -1});
+            }
+        }
+
+    },sqlGetFeedback);
+};
