@@ -9,6 +9,10 @@ class Approve extends Component {
     };
 
     componentWillMount() {
+        this.getInactiveUsers();
+    }
+
+    getInactiveUsers(){
         API.getAllInactiveUsers()
             .then((output) => {
                 if (output.status != 1)
@@ -27,8 +31,11 @@ class Approve extends Component {
         API.approveUser(payload)
             .then((output) => {
                 if (output.status === 1) {
-                    alert("User approved");
+                    this.getInactiveUsers();
+                    alert("Successful");
                 }
+                else
+                    alert("User not found");
             })
     }
 
