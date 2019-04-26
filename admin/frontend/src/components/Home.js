@@ -66,11 +66,11 @@ class Home extends Component {
               console.log("admin : "+output.isAdmin);
               this.setState({validateuser: (output.firstName+' '+output.lastName), isadmin: output.isAdmin,islogged: true});
 
-              } else {
+              } else if(output.status == -1){
                 ReactDOM.findDOMNode(this.refs.user).value = "";
                 ReactDOM.findDOMNode(this.refs.pwd).value = "";
                 this.setState({islogged: false, message:'',formValid:false});
-                alert("Invalid credentials. Login again.");
+                alert(output.message);
               }
     })
   }

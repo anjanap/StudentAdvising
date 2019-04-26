@@ -16,7 +16,7 @@ class ViewAll extends Component {
         questionList: [],
         open: false,
         categoriesList: [],
-        appliestoList: ['Current Student', 'Prospective Student', 'Both'],
+        appliestoList: [],
         editQuestion: '',
         editAnswer: '',
         editQuestionId: '',
@@ -45,6 +45,11 @@ class ViewAll extends Component {
 
     componentWillMount() {
         this.getAllquestions();
+        this.getUserGroups();
+        this.getAllCategories();
+    }
+
+    getAllCategories() {
         API.getAllCategories()
             .then((output) => {
                 if (output.status != 1)
@@ -52,13 +57,25 @@ class ViewAll extends Component {
                 else {
                     var l = output.categoryNames;
                     this.setState({categoriesList: l});
-                    this.props.history.push("/ViewAll");
+                }
+            });
+    }
+
+
+    getUserGroups() {
+        API.getAllAppliesTo()
+            .then((output) => {
+                if (output.status != 1)
+                    alert("No applies to field in database");
+                else {
+                    var l = output.appliesTo;
+                    this.setState({appliestoList: l});
                 }
             });
     }
 
     getAllquestions() {
-        this.setState({questionList: []});
+        //this.setState({questionList: []});
         API.getAllQuestions()
             .then((output) => {
                 if (output.status != 1) {
@@ -68,7 +85,7 @@ class ViewAll extends Component {
                     var qnalist = output.questionAndAnswers;
                     this.setState({questionList: qnalist});
                 }
-
+                this.props.history.push("/ViewAll");
                 $(document).ready(
                     function () {
                         $('#dtMaterialDesignExample').DataTable();

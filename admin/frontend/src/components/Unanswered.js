@@ -25,6 +25,8 @@ class Unanswered extends Component {
         formValid: false,
         questionValid: true,
         answerValid: false,
+        categoryValid: false,
+        appliestoValid: false,
         displayErrors: {question: '', answer: ''},
         unansweredQuestion: '',
         unansweredQuestionId: '',
@@ -171,6 +173,16 @@ class Unanswered extends Component {
     onOpenModal = (data) => {
         console.log("edit: " + data.question);
         this.setState({
+            question: '',
+            answer: '',
+            category: '',
+            appliesto: '',
+            formValid: false,
+            questionValid: true,
+            answerValid: false,
+            categoryValid: false, appliestoValid: false});
+
+        this.setState({
             question: data.question,
             unansweredQuestionId: data.id,
             open: true
@@ -194,6 +206,8 @@ class Unanswered extends Component {
         let fieldValidationErrors = this.state.displayErrors;
         let questionValid = this.state.questionValid;
         let answerValid = this.state.answerValid;
+        let categoryValid = this.state.categoryValid;
+        let appliestoValid = this.state.appliestoValid;
         switch (fieldName) {
             case 'question':
                 questionValid = value.length >= 1;
@@ -203,18 +217,28 @@ class Unanswered extends Component {
                 answerValid = value.length >= 1;
                 fieldValidationErrors.answer = answerValid ? '' : ' is too short';
                 break;
+            case 'category':
+                categoryValid = value.length >= 1;
+                fieldValidationErrors.answer = categoryValid ? '' : ' is required';
+                break;
+            case 'appliesto':
+                appliestoValid = value.length >= 1;
+                fieldValidationErrors.answer = appliestoValid ? '' : ' is required';
+                break;
             default:
                 break;
         }
         this.setState({
             displayErrors: fieldValidationErrors,
             questionValid: questionValid,
-            answerValid: answerValid
+            answerValid: answerValid,
+            categoryValid: categoryValid,
+            appliestoValid: appliestoValid
         }, this.validateForm);
     }
 
     validateForm() {
-        this.setState({formValid: this.state.questionValid && this.state.answerValid});
+        this.setState({formValid: this.state.questionValid && this.state.answerValid && this.state.categoryValid && this.state.appliestoValid});
     }
 
 
@@ -324,8 +348,12 @@ class Unanswered extends Component {
                                                 <div className="col-sm-2 col-md-2 col-lg-2"/>
                                                 <div className="col-sm-8 col-md-8 col-lg-8">
                                                     <select ref="catg" className="form-control" onChange={(event) => {
-                                                        this.setState({category: event.target.value});
-                                                    }} value={this.state.category}>
+                                                        const name = "category"
+                                                        const value = event.target.value
+                                                        this.setState({category: event.target.value, type: true}, () => {
+                                                            this.validateData(name, value)
+                                                        });}}
+                                                            value={this.state.category}>
                                                         <option key="0" value="" defaultValue="selected"
                                                                 disabled>Category*
                                                         </option>
@@ -349,7 +377,11 @@ class Unanswered extends Component {
                                                 <div className="col-sm-2 col-md-2 col-lg-2"/>
                                                 <div className="col-sm-8 col-md-8 col-lg-8">
                                                     <select ref="app" className="form-control" onChange={(event) => {
-                                                        this.setState({appliesto: event.target.value});
+                                                        const name = "appliesto"
+                                                        const value = event.target.value
+                                                        this.setState({appliesto: event.target.value, type: true}, () => {
+                                                            this.validateData(name, value)
+                                                        });
                                                     }} value={this.state.appliesto}>
                                                         <option key="0" value="" defaultValue="selected"
                                                                 disabled>Students*

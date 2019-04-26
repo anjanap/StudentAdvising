@@ -15,11 +15,15 @@ class Approve extends Component {
     getInactiveUsers(){
         API.getAllInactiveUsers()
             .then((output) => {
-                if (output.status != 1)
-                    alert("No inactive users in database");
+                console.log("check: "+output.status);
+                if (output.status == 501)
+                    alert("Admin Priviledges needed");
+
                 else {
                     var u = output.inActiveUsers;
                     this.setState({adminsList: u});
+                    if(this.state.adminsList.length<=0)
+                        alert("No inactive users in database");
                     this.props.history.push("/Approve");
                 }
             });
@@ -41,6 +45,7 @@ class Approve extends Component {
 
 
     render() {
+        console.log(this.props.isadmin);
         return (<div>
             {
                 this.props.isadmin==0 ? (

@@ -352,3 +352,20 @@ export const getAllMatchingQuestions = (payload) =>
             return error;
         });
 
+//get all feedback
+export const getFeedback = () =>
+    fetch(`${api}/getFeedback`, {
+        method: 'GET',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+    }).then(res => res.json())
+        .then(res => {
+            return res;
+        })
+        .catch(error => {
+            console.log("This is getFeedback error");
+            return error;
+        });
