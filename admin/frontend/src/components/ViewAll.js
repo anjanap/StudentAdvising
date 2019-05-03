@@ -87,7 +87,7 @@ class ViewAll extends Component {
                 }
                 this.props.history.push("/ViewAll");
                 $(document).ready(
-                    function () {
+                    setTimeout(function () {
                         $('#dtMaterialDesignExample').DataTable();
                         $('#dtMaterialDesignExample_wrapper').find('label').each(function () {
                             $(this).parent().append($(this).children());
@@ -103,7 +103,7 @@ class ViewAll extends Component {
                         // $('#dtMaterialDesignExample_wrapper select').addClass('mdb-select');
                         // $('#dtMaterialDesignExample_wrapper .mdb-select').materialSelect();
                         $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
-                    }
+                    },1000)
                 );
 
             });

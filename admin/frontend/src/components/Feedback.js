@@ -51,7 +51,7 @@ class Feedback extends Component {
                         // $('#dtMaterialDesignExample_wrapper select').addClass('mdb-select');
                         // $('#dtMaterialDesignExample_wrapper .mdb-select').materialSelect();
                         $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
-                    },5000)
+                    },1000)
                 );
 
             });

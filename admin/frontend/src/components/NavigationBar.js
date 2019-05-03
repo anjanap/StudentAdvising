@@ -25,7 +25,7 @@ class NavigationBar extends Component {
                     <div className="col-sm-2 col-md-2 col-lg-2">
                         <Link to='#'></Link>
                     </div>
-                    <div className="col-sm-1 col-md-1 col-lg-1">
+                    <div className="col-sm-1 col-md-1 col-lg-1" >
                         <Link to='/ViewAll' className="nav-link nav-text">Database</Link>
                     </div>
                     <div className="col-sm-1 col-md-1 col-lg-1">

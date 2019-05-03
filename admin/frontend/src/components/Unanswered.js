@@ -69,7 +69,7 @@ class Unanswered extends Component {
                             'custom-select custom-select-sm form-control form-control-sm');
                         $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
 
-                    },5000)
+                    },1000)
                 );
             });
 
@@ -136,25 +136,6 @@ class Unanswered extends Component {
         });
         console.log(payload);
         this.changeDisplay();
-        // API.setQuestionAndAnswer(payload)
-        //     .then((output) => {
-        //         console.log("check: " + output);
-        //         if (output.status === 1) {
-        //             this.setState({open: false});
-        //             var payloadDelete = ({questionId: this.state.unansweredQuestionId});
-        //             API.deleteUnansweredQuestion(payloadDelete)
-        //                 .then((output) => {
-        //                     if (output.status == 1) {
-        //                         this.getUnansweredquestions();
-        //                         alert("Successful added");
-        //                     }
-        //                 });
-        //
-        //
-        //         } else if (output === -1) {
-        //             alert("Question already exist");
-        //         }
-        //     })
     }
 
     getSuggestions = (input) => {

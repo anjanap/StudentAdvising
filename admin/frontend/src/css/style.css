@@ -110,6 +110,7 @@ td:nth-of-type(6) {
 .page-title {
     color: #0F5773;
     font-family: 'Bree Serif', serif;
+    font-size: 30px;
 }
 
 
@@ -153,4 +154,10 @@ td:nth-of-type(6) {
 
 .table {
     margin: 4px;
+}
+
+input[type=search] {
+    height: 30px;
+    border: 1px #999;
+    border-radius: 5px;
 }
