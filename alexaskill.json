@@ -1,0 +1,104 @@
+{  
+    "interactionModel": {  
+        "languageModel": {  
+            "invocationName": "student advising",  
+            "intents": [  
+                {  
+                    "name": "AMAZON.FallbackIntent",  
+                    "samples": []  
+                },  
+                {  
+                    "name": "AMAZON.CancelIntent",  
+                    "samples": []  
+                },  
+                {  
+                    "name": "AMAZON.HelpIntent",  
+                    "samples": []  
+                },  
+                {  
+                    "name": "AMAZON.StopIntent",  
+                    "samples": []  
+                },  
+                {  
+                    "name": "AMAZON.NavigateHomeIntent",  
+                    "samples": []  
+                },  
+                {  
+                    "name": "Advising",  
+                    "slots": [  
+                        {  
+                            "name": "question",  
+                            "type": "AMAZON.SearchQuery"  
+                        }  
+                    ],  
+                    "samples": [  
+                        "alexa could you tell me more about {question}",  
+                        "alexa {question}",  
+                        "alexa ask {question}",  
+                        "could you tell me {question}",  
+                        "do you know {question}",  
+                        "Alexa ask student advising {question}",  
+                        "Alexa ask student advising bot {question}",  
+                        "I want to know more about {question}",  
+                        "Alexa do you know {question}",  
+                        "question {question}",  
+                        "Alexa ask San Jose Advising about {question}",  
+                        "Alexa ask Advising {question}",  
+                        "SJSU Advising could you let me know {question}",  
+                        "Alexa could you ask SJSU Advising {question}"  
+                    ]  
+                },  
+                {  
+                    "name": "AMAZON.YesIntent",  
+                    "samples": [  
+                        "Yes I have more questions",  
+                        "Yeah",  
+                        "Yes"  
+                    ]  
+                },  
+                {  
+                    "name": "AMAZON.NoIntent",  
+                    "samples": [  
+                        "No Thank you",  
+                        "No I don't have more questions",  
+                        "Nope",  
+                        "No"  
+                    ]  
+                },  
+                {  
+                    "name": "UsefulFeedback",  
+                    "slots": [],  
+                    "samples": [  
+                        "useful"  
+                    ]  
+                },  
+                {  
+                    "name": "NotUsefulFeedback",  
+                    "slots": [],  
+                    "samples": [  
+                        "not useful"  
+                    ]  
+                },  
+                {  
+                    "name": "AMAZON.NextIntent",  
+                    "samples": [  
+                        "do you know",  
+                        "alexa"  
+                    ]  
+                }  
+            ],  
+            "types": [  
+                {  
+                    "name": "question",  
+                    "values": [  
+                        {  
+                            "name": {  
+                                "value": "how many credit units do I need to enroll for in a semester"  
+                            }  
+                        }  
+                    ]  
+                }  
+            ]  
+        }  
+    }  
+}  
