@@ -288,7 +288,7 @@ class Unanswered extends Component {
                             <Modal open={open} onClose={this.onCloseModal} center>
                                 <div className="w3-container">
                                     <div className="row">
-                                        <div className="col-sm-4 col-md-4 col-lg-4"/>
+                                        <div className="col-sm-2 col-md-2 col-lg-2"/>
                                         <div className="col-sm-8 col-md-8 col-lg-8">
                                             <h3 className="page-title">Answer Question</h3>
                                         </div>
